@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-competitor-list',
   templateUrl: './competitor-list.component.html',
