@@ -13,15 +13,18 @@ export class CompetitorListComponent implements OnInit {
 
   constructor(private competitorsService: CompetitorsService) { }
   public competitors: Array<Competitor> = [];
+  public loading: boolean = false;
   ngOnInit() {
   	this.loadCompetitors();
 
   }
 
   loadCompetitors() {
-  	this.competitorsService.getAllCompetitors().subscribe(competitors => {
+  	this.loading = true;
+  	this.competitorsService.getAllCompetitors().subscribe((competitors: Array<Competitor>) => {
+  		competitors[0].active = true;
   		this.competitors = competitors;
-  	});
+  	}, err => { console.log(err) }, () => { this.loading = false; });
   }
 
 }

@@ -21,10 +21,6 @@ export class Element {
 	constructor() {};
 	public tournament: Tournament;
 	public score: Score;
-			// 	'id', 'side', 'category', 'witness_type',
-			// 'role_type', 'score', 'element_date',
-			// 'tournament', 'round', 'opponent',
-			// 'witness_name', 'competitor_name',
 	public id: Number;
 	public side: string;
 	public category: string;

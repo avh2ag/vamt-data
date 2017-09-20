@@ -1,3 +1,4 @@
+<md-progress-bar mode="indeterminate" *ngIf="loading" ></md-progress-bar>
 <div *ngFor="let individual of competitors">
-	{{ individual.first_name }}
+	<competitor-detail [competitor]="individual"></competitor-detail>
 </div>
