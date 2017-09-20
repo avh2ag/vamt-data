@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 import { CompetitorListComponent } from './competitor-list/competitor-list.component';
 import { MaterialModule } from '@angular/material';
+import { CompetitorsService } from './competitors.service';
 
 @NgModule({
   declarations: [
@@ -11,7 +13,9 @@ import { MaterialModule } from '@angular/material';
     BrowserModule,
     HttpModule
   ],
-  providers: [],
+  providers: [
+  	CompetitorsService
+  ],
   bootstrap: [CompetitorListComponent],
   exports: [CompetitorListComponent]
 })
