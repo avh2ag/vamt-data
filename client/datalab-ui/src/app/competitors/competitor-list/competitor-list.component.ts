@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import { CompetitorsService } from '../competitors.service';
+import { Competitor } from '../../config/models';
 
 @Component({
   selector: 'competitor-list',
@@ -11,11 +12,15 @@ import { CompetitorsService } from '../competitors.service';
 export class CompetitorListComponent implements OnInit {
 
   constructor(private competitorsService: CompetitorsService) { }
-
+  public competitors: Array<Competitor> = [];
   ngOnInit() {
-  	console.log("On init?")
+  	this.loadCompetitors();
+
+  }
+
+  loadCompetitors() {
   	this.competitorsService.getAllCompetitors().subscribe(competitors => {
-  		console.log(competitors);
+  		this.competitors = competitors;
   	});
   }
 

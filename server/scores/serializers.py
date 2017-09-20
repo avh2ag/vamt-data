@@ -25,7 +25,8 @@ class ElementSerializer(serializers.ModelSerializer):
 			'role_type', 'score', 'element_date',
 			'tournament', 'round', 'opponent',
 			'witness_name', 'competitor_name',
-			)
+			) 
+		# next app: "cases" that link back
 
 class CompetitorSerializer(serializers.ModelSerializer):
 	elements = ElementSerializer(many=True)

@@ -10,16 +10,18 @@ import { Env } from '../config/env';
 export class CompetitorsService {
   private _env: Env = new Env();
   private _baseUrl: string = this._env.getAPIHost() + 'competitors/';
+  public loading: boolean = false;
 
   constructor(private http: Http) {}
 
   public getAllCompetitors() {
-    console.log(this._baseUrl);
-    console.log(this.http);
+    this.loading = true;
     return this.http.get(this._baseUrl).map(resp => {
       return resp.json();
     }).catch( err => {
       return err.json();
+    }).finally(()=> {
+      this.loading = false;
     });
   }
 
