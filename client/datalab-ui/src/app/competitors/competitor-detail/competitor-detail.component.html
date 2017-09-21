@@ -1,6 +1,10 @@
 <md-card>
-	<md-card-title>
-		{{ competitor.first_name }}
+	<md-card-title class="layout-padding">
+		<span>{{ competitor.first_name }}
+			<button md-icon-button>
+			<md-icon style="line-height: 18px;">edit</md-icon></button>
+		</span>
+
 	</md-card-title>
 	<md-card-content fxLayout="row" fxLayoutGap="10px">
 		<span>Year: {{ competitor.year || 'Unentered' }}</span> 
