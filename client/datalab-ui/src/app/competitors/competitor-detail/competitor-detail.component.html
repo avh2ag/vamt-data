@@ -12,7 +12,7 @@
 	<md-card-content>
 		<md-tab-group fxFlex="100">
 			<md-tab label="Elements">
-				Table of Competitor elements.
+				<element-table [elementsList]="activeCompetitor.elements" ></element-table>
 			</md-tab>
 			<md-tab label="Charts">
 				Charts plotting performance over time/role

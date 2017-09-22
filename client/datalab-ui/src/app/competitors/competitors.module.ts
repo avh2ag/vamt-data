@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { ElementsModule } from '../elements/elements.module';
 import { CompetitorsService } from './competitors.service';
 import { CompetitorDetailComponent } from './competitor-detail/competitor-detail.component';
 import { CompetitorListComponent } from './competitor-list/competitor-list.component';
@@ -18,7 +19,8 @@ import { CompetitorPreviewComponent } from './competitor-preview/competitor-prev
     BrowserModule,
     HttpModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ElementsModule
   ],
   providers: [
   	CompetitorsService
