@@ -1,23 +1,10 @@
 <md-card class="hover-highlight">
 	<md-card-title class="layout-padding">
-		<span>{{ competitor.first_name }}
-			<button *ngIf="!editMode" md-icon-button (click)="enableEditMode()">
-				<md-icon style="line-height:18px">edit</md-icon>
-			</button>
-			<button *ngIf="editMode" md-icon-button (click)="save()">
-				<md-icon style="line-height:18px">save</md-icon>
-			</button>
-		</span>
-
+		<span>{{ competitor.first_name }}</span>
+		<md-chip-list>
+			<md-chip *ngIf="competitor.active" color="accent">Current Competitor</md-chip>
+			<md-chip color="accent">Year: {{ competitor.year || 'Unentered' }}</md-chip>
+			<md-chip color="accent">Elements: {{ competitor.elements.length }}</md-chip>
+		</md-chip-list> 
 	</md-card-title>
-	<md-card-content fxLayout="row" fxLayoutGap="10px">
-		<md-chip *ngIf="competitor.active" color="accent">Current Competitor</md-chip>
-		<span>Year: {{ competitor.year || 'Unentered' }}</span>
-		<div class="layout-row">
-			
-		</div> 
-	</md-card-content>
-	<md-card-footer>
-		
-	</md-card-footer>
 </md-card>

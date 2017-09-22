@@ -1,0 +1,26 @@
+<md-card class="competitor-details">
+	<md-card-title class="layout-padding">
+		<span>{{ activeCompetitor.first_name }}
+			<button *ngIf="!editMode" md-icon-button (click)="enableEditMode()">
+				<md-icon style="line-height:18px">edit</md-icon>
+			</button>
+			<button *ngIf="editMode" md-icon-button (click)="save()">
+				<md-icon style="line-height:18px">save</md-icon>
+			</button>
+		</span>
+	</md-card-title>
+	<md-card-content>
+		<md-tab-group fxFlex="100">
+			<md-tab label="Elements">
+				Table of Competitor elements.
+			</md-tab>
+			<md-tab label="Charts">
+				Charts plotting performance over time/role
+			</md-tab>
+		</md-tab-group>
+
+	</md-card-content>
+	<md-card-footer>
+		
+	</md-card-footer>
+</md-card>

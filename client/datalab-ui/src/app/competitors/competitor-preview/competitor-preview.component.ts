@@ -8,19 +8,10 @@ import { Competitor } from '../../config/models';
 export class CompetitorPreviewComponent implements OnInit {
 
   @Input() competitor: Competitor;
-  public editMode: boolean = false;
   constructor() { }
 
   ngOnInit() {
   }
 
-  enableEditMode(): void {
-  	this.editMode = true;
-  }
-
-  save(): void {
-  	this.editMode = false;
-  	//call out to service to save competitor using id
-  }
 
 }
