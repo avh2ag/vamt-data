@@ -19,3 +19,9 @@ $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
   @include angular-material-theme($dark-theme);
 }
 
+.hover-highlight:hover {
+	background-color: #ffffb2;
+}
+md-card.selected-competitor {
+	background: #ffff7f;
+}

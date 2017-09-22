@@ -1,4 +1,15 @@
 <md-progress-bar mode="indeterminate" *ngIf="loading" ></md-progress-bar>
-<div *ngFor="let individual of competitors">
-	<competitor-detail [competitor]="individual"></competitor-detail>
+<div class="layout-row" *ngIf="!loading">
+	<!-- preview, selection, filters -->
+	<div class="layout-column" fxFlex="33">
+		<div *ngFor="let individual of competitors" class="layout-row" (click)="selectCompetitor(individual)"
+		 [ngClass]="{ 'selected-competitor' : activeCompetitor.id == individual.id }" >
+			<competitor-preview  [competitor]="individual"> </competitor-preview>
+		</div>
+	</div>
+	<!-- Detail Pane -->
+	<div fxFlex="66" >
+		{{ activeCompetitor.first_name }} selected.
+		
+	</div>
 </div>

@@ -14,6 +14,7 @@ export class CompetitorListComponent implements OnInit {
   constructor(private competitorsService: CompetitorsService) { }
   public competitors: Array<Competitor> = [];
   public loading: boolean = false;
+  public activeCompetitor: Competitor;
   ngOnInit() {
   	this.loadCompetitors();
 
@@ -24,7 +25,17 @@ export class CompetitorListComponent implements OnInit {
   	this.competitorsService.getAllCompetitors().subscribe((competitors: Array<Competitor>) => {
   		competitors[0].active = true;
   		this.competitors = competitors;
-  	}, err => { console.log(err) }, () => { this.loading = false; });
+      this.selectCompetitor(this.competitors[0]);
+  	}, err => { console.log(err); this.activeCompetitor = null; }, () => { this.loading = false; });
+  }
+
+  selectCompetitor(competitor: Competitor): void {
+    this.activeCompetitor = competitor;
+    console.log(this.activeCompetitor);
+  }
+
+  isSelectedCompetitor(competitor: Competitor): boolean {
+    return this.activeCompetitor.id == competitor.id;
   }
 
 }

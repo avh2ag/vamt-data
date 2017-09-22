@@ -20,7 +20,8 @@
       "prefix": "app",
       "styles": [
         "../node_modules/material-design-icons/iconfont/material-icons.css",
-        "themes.scss"
+        "themes.scss",
+        "styles.css"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",

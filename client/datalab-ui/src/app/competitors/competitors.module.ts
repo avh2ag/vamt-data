@@ -6,11 +6,13 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { CompetitorsService } from './competitors.service';
 import { CompetitorDetailComponent } from './competitor-detail/competitor-detail.component';
 import { CompetitorListComponent } from './competitor-list/competitor-list.component';
+import { CompetitorPreviewComponent } from './competitor-preview/competitor-preview.component';
 
 @NgModule({
   declarations: [
     CompetitorListComponent,
-    CompetitorDetailComponent
+    CompetitorDetailComponent,
+    CompetitorPreviewComponent
   ],
   imports: [
     BrowserModule,
