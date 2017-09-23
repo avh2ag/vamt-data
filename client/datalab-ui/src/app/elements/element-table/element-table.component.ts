@@ -1,14 +1,14 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { Element } from '../../config/models';
+import { Element, Competitor } from '../../config/models';
 import { DataSource } from '@angular/cdk/collections';
 import { MdSort } from '@angular/material';
-import {Observable} from 'rxjs/Observable';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { each } from 'lodash';
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/observable/merge';
-import 'rxjs/add/operator/map'
-
+import 'rxjs/add/operator/map';
+import { CompetitorsService } from '../../competitors/competitors.service';
 @Component({
   selector: 'element-table',
   templateUrl: './element-table.component.html',
@@ -19,6 +19,7 @@ export class ElementTableComponent implements OnInit {
   elementsDatabase;
   dataSource: ElementsDataSource | null;
   displayedColumns = ['competitor_name', 'witness_name'];
+  updateDataSubscription;
 // export class Element {
 // 	constructor() {};
 // 	public tournament: Tournament;
@@ -36,14 +37,22 @@ export class ElementTableComponent implements OnInit {
 
 // }
 
-  constructor() { }
+  constructor(private competitorsService: CompetitorsService) { }
 
   @ViewChild(MdSort) sort: MdSort;
 
   ngOnInit() {
+  	this.loadDb();
+    this.displayedColumns = ['competitor_name', 'witness_name'];
+    this.updateDataSubscription = this.competitorsService.activeCompetitorChanged.subscribe((competitor: Competitor) => {
+    	this.elementsList = competitor.elements;
+    	this.loadDb();
+    });
+  }
+
+  loadDb() {
   	this.elementsDatabase = new ElementsDatabase(this.elementsList);
     this.dataSource = new ElementsDataSource(this.elementsDatabase, this.sort);
-    this.displayedColumns = ['competitor_name', 'witness_name'];
   }
 
   onClickRow(row) {

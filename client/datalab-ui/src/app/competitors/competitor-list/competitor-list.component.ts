@@ -23,15 +23,19 @@ export class CompetitorListComponent implements OnInit {
   loadCompetitors() {
   	this.loading = true;
   	this.competitorsService.getAllCompetitors().subscribe((competitors: Array<Competitor>) => {
-  		competitors[0].active = true;
-  		this.competitors = competitors;
-      this.selectCompetitor(this.competitors[0]);
+      this.onCompetitorsLoad(competitors);
   	}, err => { console.log(err); this.activeCompetitor = null; }, () => { this.loading = false; });
+  }
+
+  onCompetitorsLoad(competitorList: Array<Competitor>): void {
+      competitorList[0].active = true;
+      this.competitors = competitorList;
+      this.selectCompetitor(this.competitors[0]);
   }
 
   selectCompetitor(competitor: Competitor): void {
     this.activeCompetitor = competitor;
-    console.log(this.activeCompetitor);
+    this.competitorsService.activeCompetitorChanged.next(this.activeCompetitor);
   }
 
   isSelectedCompetitor(competitor: Competitor): boolean {
