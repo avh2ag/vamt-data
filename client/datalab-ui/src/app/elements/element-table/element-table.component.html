@@ -4,9 +4,9 @@
 	    <!--- Note that these columns can be defined in any order.
 	          The actual rendered columns are set as a property on the row definition" -->
 
-	    <ng-container cdkColumnDef="competitor_name">
-	      <md-header-cell *cdkHeaderCellDef md-sort-header>Competitor</md-header-cell>
-	      <md-cell *cdkCellDef="let row"> {{ row.competitor_name }} </md-cell>
+	    <ng-container cdkColumnDef="date">
+	      <md-header-cell *cdkHeaderCellDef md-sort-header>Date</md-header-cell>
+	      <md-cell *cdkCellDef="let row"> {{ row.tournament.tournament_date | date}} </md-cell>
 	    </ng-container>
 
 	    <ng-container cdkColumnDef="witness_name">
@@ -14,15 +14,25 @@
 	      <md-cell *cdkCellDef="let row"> {{ row.witness_name || "N/A" }} </md-cell>
 	    </ng-container>    
 
-	    <!--     <ng-container cdkColumnDef="agency">
-	      <md-header-cell *cdkHeaderCellDef md-sort-header>Agency</md-header-cell>
-	      <md-cell *cdkCellDef="let row" > {{ row.agency || '' }} </md-cell>
-	    </ng-container> -->
+	   	<ng-container cdkColumnDef="category">
+	      <md-header-cell *cdkHeaderCellDef md-sort-header>Category</md-header-cell>
+	      <md-cell *cdkCellDef="let row"> {{ row.category || "N/A" }} </md-cell>
+	    </ng-container> 
 
-	    <!--     <ng-container cdkColumnDef="offSym">
-	      <md-header-cell *cdkHeaderCellDef md-sort-header>Office Symbol</md-header-cell>
-	      <md-cell *cdkCellDef="let row" > {{ row.offSym || '' }} </md-cell>
-	    </ng-container> -->
+	    <ng-container cdkColumnDef="z_score">
+	      <md-header-cell *cdkHeaderCellDef md-sort-header>Z Avg</md-header-cell>
+	      <md-cell *cdkCellDef="let row"> {{ row.score.average_z || "N/A" }} </md-cell>
+	    </ng-container>    
+
+	    <ng-container cdkColumnDef="raw_score">
+	      <md-header-cell *cdkHeaderCellDef md-sort-header>Raw Score</md-header-cell>
+	      <md-cell *cdkCellDef="let row"> {{ row.score.raw_score || "N/A" }} </md-cell>
+	    </ng-container> 	    
+
+	    <ng-container cdkColumnDef="side">
+	      <md-header-cell *cdkHeaderCellDef md-sort-header>Side</md-header-cell>
+	      <md-cell *cdkCellDef="let row"> {{ row.side || "N/A" }} </md-cell>
+	    </ng-container>  
 
 	    <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
 	    <md-row class="hover-highlight" *cdkRowDef="let row; columns: displayedColumns;"></md-row>

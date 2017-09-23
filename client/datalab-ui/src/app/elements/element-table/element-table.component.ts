@@ -43,7 +43,8 @@ export class ElementTableComponent implements OnInit {
 
   ngOnInit() {
   	this.loadDb();
-    this.displayedColumns = ['competitor_name', 'witness_name'];
+    this.displayedColumns = ['date', 'side', 'category', 'witness_name',
+    	'z_score', 'raw_score', ];
     this.updateDataSubscription = this.competitorsService.activeCompetitorChanged.subscribe((competitor: Competitor) => {
     	this.elementsList = competitor.elements;
     	this.loadDb();
