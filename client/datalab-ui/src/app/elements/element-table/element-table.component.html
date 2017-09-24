@@ -21,7 +21,7 @@
 
 	    <ng-container cdkColumnDef="z_score">
 	      <md-header-cell *cdkHeaderCellDef md-sort-header>Z Avg</md-header-cell>
-	      <md-cell *cdkCellDef="let row"> {{ row.score.average_z || "N/A" }} </md-cell>
+	      <md-cell *cdkCellDef="let row"> {{ row.score.average_z || '0' }} </md-cell>
 	    </ng-container>    
 
 	    <ng-container cdkColumnDef="raw_score">
