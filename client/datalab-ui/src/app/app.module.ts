@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CompetitorModule, CompetitorListComponent } from './competitors/index';
 
 const appRoutes: Routes = [
+  { path: '**', redirectTo: '/competitors', pathMatch: 'full' },
   { path: 'competitors', component: CompetitorListComponent }
 ];
 
