@@ -1,9 +1,14 @@
 <div class="container">
+	<md-paginator #paginator
+		            [length]="totalResults"
+		            [pageIndex]="pageIndex"
+		            [pageSize]="pageSize"
+		            [pageSizeOptions]="pageSizeOptions">
+	</md-paginator>	
 	<md-table #table [dataSource]="dataSource" mdSort>
 
 	    <!--- Note that these columns can be defined in any order.
 	          The actual rendered columns are set as a property on the row definition" -->
-
 	    <ng-container cdkColumnDef="date">
 	      <md-header-cell *cdkHeaderCellDef md-sort-header>Date</md-header-cell>
 	      <md-cell *cdkCellDef="let row"> {{ row.tournament.tournament_date | date}} </md-cell>

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Element, Competitor } from '../../config/models';
 import { DataSource } from '@angular/cdk/collections';
-import { MdSort } from '@angular/material';
+import { MdSort, MdPaginator } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { each } from 'lodash';
@@ -16,10 +16,17 @@ import { CompetitorsService } from '../../competitors/competitors.service';
 })
 export class ElementTableComponent implements OnInit {
   @Input() elementsList: Array<Element>; 
+  @ViewChild(MdPaginator) paginator: MdPaginator;
+  @ViewChild(MdSort) sort: MdSort;
   elementsDatabase;
-  dataSource: ElementsDataSource | null;
+  dataSource;
   displayedColumns = ['competitor_name', 'witness_name'];
   updateDataSubscription;
+  totalResults: Number = 0;
+  pageIndex = 0;
+  pageSize = 25;
+  keyword = "";
+  pageSizeOptions: Array<Number> = [10, 25, 50, 100];
 // export class Element {
 // 	constructor() {};
 // 	public tournament: Tournament;
@@ -39,22 +46,34 @@ export class ElementTableComponent implements OnInit {
 
   constructor(private competitorsService: CompetitorsService) { }
 
-  @ViewChild(MdSort) sort: MdSort;
-
-  ngOnInit() {
-  	this.loadDb();
+  ngOnInit() {	
     this.displayedColumns = ['date', 'side', 'category', 'witness_name',
     	'z_score', 'raw_score', ];
     this.updateDataSubscription = this.competitorsService.activeCompetitorChanged.subscribe((competitor: Competitor) => {
     	this.elementsList = competitor.elements;
     	this.loadDb();
     });
+    this.loadDb();
   }
 
   loadDb() {
+  	this.resetPagination();
   	this.elementsDatabase = new ElementsDatabase(this.elementsList);
-    this.dataSource = new ElementsDataSource(this.elementsDatabase, this.sort);
+    this.dataSource = new ElementsDataSource(this.elementsDatabase, this.sort, this.paginator);
   }
+
+  resetPagination() {
+  	this.totalResults = this.elementsList.length;
+  	this.pageIndex = 0;
+  	this.pageSize = 25;
+  	this.pageSizeOptions = [10, 25, 50, 100];
+  }
+
+  public onPageEvent($event) {
+    this.pageIndex = $event.pageIndex;
+    this.pageSize = $event.pageSize;
+    this.loadDb();
+  }  
 
   onClickRow(row) {
   	console.log(row);
@@ -96,7 +115,8 @@ export class ElementsDatabase {
  * should be rendered.
  */
 export class ElementsDataSource extends DataSource<any> {
-  constructor(private _elementsDatabase: ElementsDatabase, private _sort: MdSort) {
+  constructor(private _elementsDatabase: ElementsDatabase, private _sort: MdSort,
+  	private _paginator: MdPaginator) {
     super();
   }
 
@@ -105,10 +125,13 @@ export class ElementsDataSource extends DataSource<any> {
     const displayDataChanges = [
       this._elementsDatabase.dataChange,
       this._sort.mdSortChange,
+      this._paginator.page
     ];
 
     return Observable.merge(...displayDataChanges).map(() => {
-      return this.getSortedData();
+      const data = this.getSortedData().slice();
+      const startIndex = this._paginator.pageIndex * this._paginator.pageSize;
+      return data.splice(startIndex, this._paginator.pageSize);
     });
   }
 
