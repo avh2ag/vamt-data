@@ -8,6 +8,7 @@ import { each } from 'lodash';
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/map';
+import * as moment from 'moment';
 import { CompetitorsService } from '../../competitors/competitors.service';
 @Component({
   selector: 'element-table',
@@ -23,6 +24,8 @@ export class ElementTableComponent implements OnInit {
   displayedColumns = ['competitor_name', 'witness_name'];
   updateDataSubscription;
   totalResults: Number = 0;
+  defaultPageIndex = 0;
+  defaultPageSize = 25;
   pageIndex = 0;
   pageSize = 25;
   keyword = "";
@@ -64,9 +67,8 @@ export class ElementTableComponent implements OnInit {
 
   resetPagination() {
   	this.totalResults = this.elementsList.length;
-  	this.pageIndex = 0;
-  	this.pageSize = 25;
-  	this.pageSizeOptions = [10, 25, 50, 100];
+  	this.pageIndex = this.defaultPageIndex;
+  	this.pageSize = this.defaultPageSize;
   }
 
   public onPageEvent($event) {
@@ -143,14 +145,16 @@ export class ElementsDataSource extends DataSource<any> {
     if (!this._sort.active || this._sort.direction == '') { return data; }
 
     return data.sort((a, b) => {
-      let propertyA: number|string = '';
-      let propertyB: number|string = '';
+      let propertyA: any = '';
+      let propertyB: any = '';
 
       switch (this._sort.active) {
-        // case 'userId': [propertyA, propertyB] = [a.id, b.id]; break;
-        // case 'userName': [propertyA, propertyB] = [a.name, b.name]; break;
-        // case 'progress': [propertyA, propertyB] = [a.progress, b.progress]; break;
-        // case 'color': [propertyA, propertyB] = [a.color, b.color]; break;
+        case 'witness_name': [propertyA, propertyB] = [a.witness_name, b.witness_name]; break;
+        case 'category': [propertyA, propertyB] = [a.category, b.category]; break;
+        case 'side': [propertyA, propertyB] = [a.side, b.side]; break;
+        case 'z_score': [propertyA, propertyB] = [a.score.average_z, b.score.average_z]; break;
+        case 'raw_score': [propertyA, propertyB] = [a.score.raw_score, b.score.raw_score]; break;
+        case 'date': [propertyA, propertyB] = [moment.utc(a['element_date']), moment.utc(b['element_date'])]; break;
       }
 
       let valueA = isNaN(+propertyA) ? propertyA : +propertyA;
