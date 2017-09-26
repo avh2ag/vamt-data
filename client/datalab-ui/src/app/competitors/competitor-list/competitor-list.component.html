@@ -1,14 +1,14 @@
 <md-progress-bar mode="indeterminate" *ngIf="loading" ></md-progress-bar>
 <div class="layout-row" *ngIf="!loading">
 	<!-- preview, selection, filters -->
-	<div class="layout-column" fxFlex="33">
+	<div class="layout-column" fxFlex="33" *ngIf="previewVisible">
 		<div class="layout-row layout-padding">
 			<md-form-field fxFlex="90">
 				<input mdInput #keyword placeholder="Competitor name" >
 			</md-form-field>
-			<div fxFlex="10" style="z-index: 10;padding-left: 5%;">
-				<button md-icon-button md-raised-button color="accent">
-					<md-icon>chevron_left</md-icon>
+			<div fxFlex="10" style="z-index: 10; padding-left: 5%;">
+				<button md-icon-button md-raised-button color="accent" (click)="hidePreview()">
+						<md-icon>chevron_left</md-icon>
 				</button>
 			</div>
 		</div>
@@ -17,8 +17,14 @@
 			<competitor-preview  [competitor]="individual"> </competitor-preview>
 		</div>
 	</div>
+	<div fxFlex="5" *ngIf="!previewVisible">
+		<button md-icon-button md-raised-button color="accent" (click)="showPreview()">
+			<md-icon>chevron_right</md-icon>
+		</button>
+	</div>
 	<!-- Detail Pane -->
-	<div fxFlex="66">
+	<div fxFlex class="layout-row">
+
 		<competitor-detail [activeCompetitor]="activeCompetitor"></competitor-detail>
 	</div>
 </div>

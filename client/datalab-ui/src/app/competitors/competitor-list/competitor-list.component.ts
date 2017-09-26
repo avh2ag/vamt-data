@@ -14,6 +14,8 @@ export class CompetitorListComponent implements OnInit {
   public competitors: Array<Competitor> = [];
   public loading: boolean = false;
   public activeCompetitor: Competitor;
+  public previewVisible: boolean = true;
+
   ngOnInit() {
   	this.loadCompetitors();
   }
@@ -38,6 +40,14 @@ export class CompetitorListComponent implements OnInit {
 
   isSelectedCompetitor(competitor: Competitor): boolean {
     return this.activeCompetitor.id == competitor.id;
+  }
+
+  hidePreview() {
+    this.previewVisible = false;
+  }
+
+  showPreview() {
+    this.previewVisible = true;
   }
 
 }
