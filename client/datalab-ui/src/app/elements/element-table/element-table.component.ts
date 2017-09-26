@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { Element, Competitor } from '../../config/models';
 import { DataSource } from '@angular/cdk/collections';
 import { MdSort, MdPaginator } from '@angular/material';
@@ -8,6 +8,9 @@ import { each } from 'lodash';
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/observable/fromEvent';
 import * as moment from 'moment';
 import { CompetitorsService } from '../../competitors/competitors.service';
 @Component({
@@ -19,8 +22,9 @@ export class ElementTableComponent implements OnInit {
   @Input() elementsList: Array<Element>; 
   @ViewChild(MdPaginator) paginator: MdPaginator;
   @ViewChild(MdSort) sort: MdSort;
+  @ViewChild('filter') filter: ElementRef;
   elementsDatabase;
-  dataSource;
+  dataSource: ElementsDataSource | null;
   displayedColumns = ['competitor_name', 'witness_name'];
   updateDataSubscription;
   totalResults: Number = 0;
@@ -30,22 +34,6 @@ export class ElementTableComponent implements OnInit {
   pageSize = 25;
   keyword = "";
   pageSizeOptions: Array<Number> = [10, 25, 50, 100];
-// export class Element {
-// 	constructor() {};
-// 	public tournament: Tournament;
-// 	public score: Score;
-// 	public id: Number;
-// 	public side: string;
-// 	public category: string;
-// 	public witness_type: string;
-// 	public role_type: string;
-// 	public element_date;
-// 	public round: Number;
-// 	public opponent: string;
-// 	public witness_name: string;
-// 	public competitor_name: string;
-
-// }
 
   constructor(private competitorsService: CompetitorsService) { }
 
@@ -56,7 +44,16 @@ export class ElementTableComponent implements OnInit {
     	this.elementsList = competitor.elements;
     	this.loadDb();
     });
+    Observable.fromEvent(this.filter.nativeElement, 'keyup')
+        .debounceTime(150)
+        .distinctUntilChanged()
+        .subscribe(() => {
+          if (!this.dataSource) { return; }
+          this.dataSource.filter = this.filter.nativeElement.value;
+          this.totalResults = this.dataSource.total;
+        });
     this.loadDb();
+
   }
 
   loadDb() {
@@ -117,6 +114,10 @@ export class ElementsDatabase {
  * should be rendered.
  */
 export class ElementsDataSource extends DataSource<any> {
+  _filterChange = new BehaviorSubject('');
+  get filter(): string { return this._filterChange.value; }
+  set filter(filter: string) { this._filterChange.next(filter); }
+  public total: Number = 0;
   constructor(private _elementsDatabase: ElementsDatabase, private _sort: MdSort,
   	private _paginator: MdPaginator) {
     super();
@@ -127,12 +128,18 @@ export class ElementsDataSource extends DataSource<any> {
     const displayDataChanges = [
       this._elementsDatabase.dataChange,
       this._sort.mdSortChange,
-      this._paginator.page
+      this._paginator.page,
+      this._filterChange,
     ];
 
     return Observable.merge(...displayDataChanges).map(() => {
-      const data = this.getSortedData().slice();
+      const data = this.getSortedData().slice().filter((item:Element) => {
+        let searchStr = JSON.stringify(item).toLowerCase();
+        return searchStr.indexOf(this.filter.toLowerCase()) != -1;
+      });
+      this.total = data.length;
       const startIndex = this._paginator.pageIndex * this._paginator.pageSize;
+      
       return data.splice(startIndex, this._paginator.pageSize);
     });
   }
