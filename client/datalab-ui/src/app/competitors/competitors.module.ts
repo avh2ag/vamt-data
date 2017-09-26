@@ -8,12 +8,14 @@ import { CompetitorsService } from './competitors.service';
 import { CompetitorDetailComponent } from './competitor-detail/competitor-detail.component';
 import { CompetitorListComponent } from './competitor-list/competitor-list.component';
 import { CompetitorPreviewComponent } from './competitor-preview/competitor-preview.component';
+import { CompetitorPipe } from './competitor-list/competitor-filter.pipe';
 
 @NgModule({
   declarations: [
     CompetitorListComponent,
     CompetitorDetailComponent,
-    CompetitorPreviewComponent
+    CompetitorPreviewComponent,
+    CompetitorPipe
   ],
   imports: [
     BrowserModule,

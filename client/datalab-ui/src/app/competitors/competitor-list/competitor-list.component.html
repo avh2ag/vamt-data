@@ -2,7 +2,17 @@
 <div class="layout-row" *ngIf="!loading">
 	<!-- preview, selection, filters -->
 	<div class="layout-column" fxFlex="33">
-		<div *ngFor="let individual of competitors" class="layout-row" (click)="selectCompetitor(individual)"
+		<div class="layout-row layout-padding">
+			<md-form-field fxFlex="90">
+				<input mdInput #keyword placeholder="Competitor name" >
+			</md-form-field>
+			<div fxFlex="10" style="z-index: 10;padding-left: 5%;">
+				<button md-icon-button md-raised-button color="accent">
+					<md-icon>chevron_left</md-icon>
+				</button>
+			</div>
+		</div>
+		<div *ngFor="let individual of competitors | competitorFilter:keyword.value" class="layout-row" (click)="selectCompetitor(individual)"
 		 [ngClass]="{ 'selected-competitor' : activeCompetitor.id == individual.id }" >
 			<competitor-preview  [competitor]="individual"> </competitor-preview>
 		</div>

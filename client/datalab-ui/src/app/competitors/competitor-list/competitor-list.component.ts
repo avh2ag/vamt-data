@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import { CompetitorsService } from '../competitors.service';
 import { Competitor } from '../../config/models';
-
 @Component({
   selector: 'competitor-list',
   templateUrl: './competitor-list.component.html',
@@ -17,7 +16,6 @@ export class CompetitorListComponent implements OnInit {
   public activeCompetitor: Competitor;
   ngOnInit() {
   	this.loadCompetitors();
-
   }
 
   loadCompetitors() {
