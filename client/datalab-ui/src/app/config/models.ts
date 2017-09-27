@@ -37,7 +37,7 @@ export class Element {
 export class Competitor {
 	constructor() {};
 	public id: Number;
-	public first_name: string;
+	public name: string;
 	public grad_year: Number;
 	public picture_url: string;
 	public active: boolean;

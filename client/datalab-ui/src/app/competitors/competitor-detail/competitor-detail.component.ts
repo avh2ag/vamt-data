@@ -14,7 +14,7 @@ export class CompetitorDetailComponent implements OnInit {
 
   ngOnInit() {
     this.year.nativeElement.value = this.activeCompetitor.grad_year;
-    this.firstName.nativeElement.value = this.activeCompetitor.first_name;
+    this.firstName.nativeElement.value = this.activeCompetitor.name;
   }
 
   enableEditMode(): void {

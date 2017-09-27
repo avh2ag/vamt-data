@@ -1,6 +1,6 @@
 <md-card class="hover-highlight">
 	<md-card-title class="layout-padding">
-		<span>{{ competitor.first_name }}</span>
+		<span>{{ competitor.name }}</span>
 		<md-chip-list>
 			<md-chip *ngIf="competitor.active" color="accent">Current Competitor</md-chip>
 			<md-chip color="accent">Year: {{ competitor.grad_year || 'Unentered' }}</md-chip>

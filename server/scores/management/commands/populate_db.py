@@ -75,7 +75,7 @@ class Command(BaseCommand):
 		return tournament
 
 	def get_competitor_elements(self, competitor, data):
-		competitor_info = data[data[FIRST_NAME] == competitor.first_name]
+		competitor_info = data[data[FIRST_NAME] == competitor.name]
 		for idx, row in competitor_info.iterrows():
 			side = row[SIDE]
 			role_type = row[ROLE_TYPE]
@@ -87,7 +87,7 @@ class Command(BaseCommand):
 			opponent = row[OPPONENT]
 			element_date = row[DATE]
 			witness_name = row[WITNESS_NAME]
-			competitor_name = competitor.first_name
+			competitor_name = competitor.name
 
 			score_obj = self.get_element_score(raw_score, z_score)
 			tournament_obj = self.get_element_tournament(tournament, element_date)
@@ -110,7 +110,7 @@ class Command(BaseCommand):
 	def import_competitor(self, data):
 		first_names =  data[FIRST_NAME].unique()
 		for name in first_names:
-			competitor, created = Competitor.objects.get_or_create(first_name=name)
+			competitor, created = Competitor.objects.get_or_create(name=name)
 			if created:
 				competitor.save()
 			self.get_competitor_elements(competitor, data)

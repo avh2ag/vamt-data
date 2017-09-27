@@ -25,8 +25,7 @@ class Element(models.Model):
 	opponent = models.TextField(null=True, blank=True)
 
 class Competitor(models.Model):
-	first_name = models.TextField(blank=False, null=False)
-	last_name = models.TextField(blank=True)
+	name = models.TextField(blank=False, null=False)
 	elements = models.ManyToManyField(Element)
 	grad_year = models.IntegerField(null=True, blank=True)
 	picture_url = models.TextField(blank=True)
