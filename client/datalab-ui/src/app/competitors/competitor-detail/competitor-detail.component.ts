@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { Competitor, Tournament, Element } from '../../config/models';
 @Component({
   selector: 'competitor-detail',
@@ -7,10 +7,14 @@ import { Competitor, Tournament, Element } from '../../config/models';
 })
 export class CompetitorDetailComponent implements OnInit {
   @Input() activeCompetitor: Competitor;  
+  @ViewChild('competitorYear') year: ElementRef;
+  @ViewChild('firstName') firstName: ElementRef;
   public editMode: boolean = false;
   constructor() { }
 
   ngOnInit() {
+    this.year.nativeElement.value = this.activeCompetitor.grad_year;
+    this.firstName.nativeElement.value = this.activeCompetitor.first_name;
   }
 
   enableEditMode(): void {

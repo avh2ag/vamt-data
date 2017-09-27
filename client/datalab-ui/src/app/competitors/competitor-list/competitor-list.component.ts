@@ -28,6 +28,7 @@ export class CompetitorListComponent implements OnInit {
   }
 
   onCompetitorsLoad(competitorList: Array<Competitor>): void {
+    console.log(competitorList);
       competitorList[0].active = true;
       this.competitors = competitorList;
       this.selectCompetitor(this.competitors[0]);

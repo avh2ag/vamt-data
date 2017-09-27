@@ -28,6 +28,6 @@ class Competitor(models.Model):
 	first_name = models.TextField(blank=False, null=False)
 	last_name = models.TextField(blank=True)
 	elements = models.ManyToManyField(Element)
-	year = models.IntegerField(null=True, blank=True)
+	grad_year = models.IntegerField(null=True, blank=True)
 	picture_url = models.TextField(blank=True)
 	active = models.BooleanField(default=False)

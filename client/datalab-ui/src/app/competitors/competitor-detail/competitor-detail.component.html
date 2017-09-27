@@ -1,16 +1,24 @@
 <md-card class="competitor-details">
-	<md-card-title class="layout-padding">
-		<span>{{ activeCompetitor.first_name }}
+	<md-card-title class="layout-padding" style="margin-bottom:0;">
+<!-- 			<span *ngIf="!editMode" fxFlex="70">{{ activeCompetitor.first_name }}
+			</span> -->
+			<md-form-field fxFlex="50">
+				<input mdInput #firstName [readonly]="!editMode">
+			</md-form-field>
+			<span fxFlex="5"></span>
+			<md-form-field fxFlex="15">
+	    		<input mdInput placeholder="Grad Year" #competitorYear [readonly]="!editMode">
+	  		</md-form-field>
+			<span fxFlex></span>
 			<button *ngIf="!editMode" md-icon-button (click)="enableEditMode()">
-				<md-icon style="line-height:18px">edit</md-icon>
+				<md-icon >edit</md-icon>
 			</button>
 			<button *ngIf="editMode" md-icon-button (click)="save()">
 				<md-icon style="line-height:18px">save</md-icon>
 			</button>
-		</span>
 	</md-card-title>
 	<md-card-content>
-		<md-tab-group fxFlex="100">
+		<md-tab-group >
 			<md-tab label="Elements">
 				<element-table [elementsList]="activeCompetitor.elements" ></element-table>
 			</md-tab>
