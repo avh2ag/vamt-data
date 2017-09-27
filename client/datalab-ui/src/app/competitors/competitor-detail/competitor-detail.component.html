@@ -13,6 +13,9 @@
 			<button *ngIf="!editMode" md-icon-button (click)="enableEditMode()">
 				<md-icon >edit</md-icon>
 			</button>
+			<button *ngIf="editMode" md-icon-button (click)="cancelEdit()">
+				<md-icon>cancel</md-icon>
+			</button>
 			<button *ngIf="editMode" md-icon-button (click)="save()">
 				<md-icon style="line-height:18px">save</md-icon>
 			</button>
