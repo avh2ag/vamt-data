@@ -2,7 +2,7 @@
 	<md-card-title class="layout-padding">
 		<span>{{ competitor.name }}</span>
 		<md-chip-list>
-			<md-chip *ngIf="competitor.active" color="accent">Current Competitor</md-chip>
+			<md-chip *ngIf="competitor.active" color="primary">Current Competitor</md-chip>
 			<md-chip color="accent">Year: {{ competitor.grad_year || 'Unentered' }}</md-chip>
 			<md-chip color="accent">Elements: {{ competitor.elements.length }}</md-chip>
 		</md-chip-list> 

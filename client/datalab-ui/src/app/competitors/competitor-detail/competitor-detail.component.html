@@ -9,6 +9,7 @@
 			<md-form-field fxFlex="15">
 	    		<input mdInput #competitorYear placeholder="Grad Year" [value]="activeCompetitor.grad_year" [readonly]="!editMode">
 	  		</md-form-field>
+	  		<md-checkbox style="padding-top: 4%;" *ngIf="editMode" #checkBox [checked]="activeCompetitor.active" >Active</md-checkbox>
 			<span fxFlex></span>
 			<button *ngIf="!editMode" md-icon-button (click)="enableEditMode()">
 				<md-icon >edit</md-icon>

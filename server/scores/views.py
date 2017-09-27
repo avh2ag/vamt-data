@@ -34,6 +34,7 @@ class CompetitorViewset(viewsets.ModelViewSet):
 		competitor = Competitor.objects.get(id=competitor_info["id"])
 		competitor.grad_year = competitor_info["grad_year"]
 		competitor.name = competitor_info["name"]
+		competitor.active = competitor_info["active"]
 		competitor.save()
 		serializer = CompetitorSerializer(competitor)
 		return Response(serializer.data, status=status.HTTP_200_OK)
