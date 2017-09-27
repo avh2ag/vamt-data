@@ -3,11 +3,11 @@
 <!-- 			<span *ngIf="!editMode" fxFlex="70">{{ activeCompetitor.first_name }}
 			</span> -->
 			<md-form-field fxFlex="50">
-				<input mdInput #name [readonly]="!editMode">
+				<input mdInput #name [value]="activeCompetitor.name" [readonly]="!editMode">
 			</md-form-field>
 			<span fxFlex="5"></span>
 			<md-form-field fxFlex="15">
-	    		<input mdInput placeholder="Grad Year" #competitorYear [readonly]="!editMode">
+	    		<input mdInput #competitorYear placeholder="Grad Year" [value]="activeCompetitor.grad_year" [readonly]="!editMode">
 	  		</md-form-field>
 			<span fxFlex></span>
 			<button *ngIf="!editMode" md-icon-button (click)="enableEditMode()">
