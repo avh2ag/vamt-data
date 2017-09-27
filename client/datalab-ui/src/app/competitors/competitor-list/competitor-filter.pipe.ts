@@ -10,7 +10,7 @@ export class CompetitorPipe implements PipeTransform {
       return items;
     }
     return items.filter(item => {
-   		return item.first_name.toLowerCase().indexOf(value.toLowerCase()) >= 0;
+   		return item.name.toLowerCase().indexOf(value.toLowerCase()) >= 0;
     });
     
   }

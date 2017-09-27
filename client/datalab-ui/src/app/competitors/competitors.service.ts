@@ -10,7 +10,7 @@ import { Competitor } from '../config/models';
 @Injectable()
 export class CompetitorsService {
   private _env: Env = new Env();
-  private _baseUrl: string = this._env.getAPIHost() + 'competitors/';
+  private _baseUrl: string = this._env.getAPIHost() + 'competitors';
   public activeCompetitor: Competitor;
   public activeCompetitorChanged: Subject<Competitor> = new Subject();
   constructor(private http: Http) {}
@@ -19,6 +19,17 @@ export class CompetitorsService {
     return this.http.get(this._baseUrl).map(resp => {
       return resp.json();
     }).catch( err => {
+      return err.json();
+    });
+  }
+
+  public updateCompetitor(competitor: Competitor) {
+    let url = `${this._baseUrl}/${competitor.id}/`;
+    return this.http.put(url, {
+      competitor: competitor
+    }).map(resp => {
+      return resp.json();
+    }).catch(err => {
       return err.json();
     });
   }

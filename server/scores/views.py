@@ -28,3 +28,12 @@ class ScoreViewset(viewsets.ModelViewSet):
 class CompetitorViewset(viewsets.ModelViewSet):
 	serializer_class = CompetitorSerializer
 	queryset = Competitor.objects.all()
+
+	def update(self, request, pk=None):
+		competitor_info = request.data.get('competitor')
+		competitor = Competitor.objects.get(id=competitor_info["id"])
+		competitor.grad_year = competitor_info["grad_year"]
+		competitor.name = competitor_info["name"]
+		competitor.save()
+		serializer = CompetitorSerializer(competitor)
+		return Response(serializer.data, status=status.HTTP_200_OK)
