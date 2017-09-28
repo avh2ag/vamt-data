@@ -30,6 +30,11 @@
 	      <md-cell *cdkCellDef="let row"> {{ row.category || "N/A" }} </md-cell>
 	    </ng-container> 
 
+	   	<ng-container cdkColumnDef="role_type">
+	      <md-header-cell *cdkHeaderCellDef md-sort-header>Role</md-header-cell>
+	      <md-cell *cdkCellDef="let row"> {{ row.role_type || "N/A" }} </md-cell>
+	    </ng-container> 
+
 	    <ng-container cdkColumnDef="z_score">
 	      <md-header-cell *cdkHeaderCellDef md-sort-header>Z Avg</md-header-cell>
 	      <md-cell *cdkCellDef="let row"> {{ row.score.average_z || '0' }} </md-cell>
