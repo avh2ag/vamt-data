@@ -43,7 +43,8 @@ DATE_MAP = {
 }
 
 NAME_MAP = {
-	'CASEY': 'SCHMITTY'
+	'CASEY': 'SCHMITTY',
+	'BEN': 'NM'
 }
 
 
