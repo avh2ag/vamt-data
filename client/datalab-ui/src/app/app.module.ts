@@ -5,10 +5,12 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CompetitorModule, CompetitorListComponent } from './competitors/index';
+import { CasesModule, CasesListComponent } from './cases/index';
 
 const appRoutes: Routes = [
-  { path: '**', redirectTo: '/competitors', pathMatch: 'full' },
-  { path: 'competitors', component: CompetitorListComponent }
+  { path: 'competitors', component: CompetitorListComponent },
+  { path: 'cases', component: CasesListComponent },
+  { path: '**', redirectTo: '/competitors', pathMatch: 'full' }
 ];
 
 @NgModule({
@@ -20,7 +22,8 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MaterialModule,
     RouterModule.forRoot(appRoutes),
-    CompetitorModule
+    CompetitorModule,
+    CasesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
