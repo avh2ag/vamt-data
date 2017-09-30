@@ -22,7 +22,7 @@
 
 	    <ng-container cdkColumnDef="witness_name">
 	      <md-header-cell *cdkHeaderCellDef md-sort-header>Witness</md-header-cell>
-	      <md-cell *cdkCellDef="let row"> {{ row.witness_name || "N/A" }} </md-cell>
+	      <md-cell *cdkCellDef="let row" > {{ row.witness.witness_name || "N/A" }} </md-cell>
 	    </ng-container>    
 
 	   	<ng-container cdkColumnDef="category">

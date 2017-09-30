@@ -17,6 +17,13 @@ export class Tournament{
 	public tournament_name: string;
 }
 
+export class Witness {
+	constructor() {};
+	public id: Number;
+	public witness_type: string;
+	public witness_name: string;
+}
+
 export class Element {
 	constructor() {};
 	public tournament: Tournament;
@@ -24,12 +31,11 @@ export class Element {
 	public id: Number;
 	public side: string;
 	public category: string;
-	public witness_type: string;
+	public witness: Witness;
 	public role_type: string;
 	public element_date;
 	public round: Number;
 	public opponent: string;
-	public witness_name: string;
 	public competitor_name: string;
 
 }

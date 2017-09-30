@@ -1,6 +1,13 @@
 from models import *
 from rest_framework import serializers
 
+class WitnessSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Witness
+		fields = (
+			'id', 'witness_name', 'witness_type'
+		)
+
 class ScoreSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Score
@@ -18,13 +25,14 @@ class TournamentSerializer(serializers.ModelSerializer):
 class ElementSerializer(serializers.ModelSerializer):
 	tournament = TournamentSerializer()
 	score = ScoreSerializer()
+	witness = WitnessSerializer()
 	class Meta:
 		model = Element
 		fields = (
-			'id', 'side', 'category', 'witness_type',
+			'id', 'side', 'category',
 			'role_type', 'score', 'element_date',
 			'tournament', 'round', 'opponent',
-			'witness_name', 'competitor_name',
+			'witness', 'competitor_name',
 			) 
 		# next app: "cases" that link back
 

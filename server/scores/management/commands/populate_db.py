@@ -15,7 +15,7 @@ ROLE_TYPE = "Role_Group"
 TEAM = "Team_Number"
 WITNESS_NAME = "Wit_Last_Name"
 CATEGORY = "Element_Type"
-
+CASE_NAME = "Case"
 RAW_DATA = [
 	# {
 	# 	'years': ['2015', '2016'],
@@ -57,6 +57,23 @@ def month_to_year(month, years):
 class Command(BaseCommand):
 	help = 'test of loading data'
 
+	def get_element_witness(self, witness_name):
+		witness, created = Witness.objects.get_or_create(
+			witness_name=witness_name
+			)
+		if created:
+			witness.save()
+		return witness
+
+	def get_element_case(self, case_name):
+		case, created = Case.objects.get_or_create(
+			case_name=case_name,
+			case_type="Civil"
+			)
+		if case:
+			case.save()
+		return case
+
 	def get_element_score(self, raw_score, z_score):
 		score, created = Score.objects.get_or_create(
 			raw_score=raw_score,
@@ -90,6 +107,7 @@ class Command(BaseCommand):
 			witness_name = row[WITNESS_NAME]
 			competitor_name = competitor.name
 
+			witness_obj = self.get_element_witness(witness_name)
 			score_obj = self.get_element_score(raw_score, z_score)
 			tournament_obj = self.get_element_tournament(tournament, element_date)
 			new_element, created = Element.objects.get_or_create(
@@ -101,7 +119,7 @@ class Command(BaseCommand):
 				opponent=opponent,
 				score=score_obj,
 				tournament=tournament_obj,
-				witness_name=witness_name,
+				witness=witness_obj,
 				competitor_name=competitor_name
 				)
 			if created:

@@ -93,6 +93,7 @@ export class ElementsDatabase {
   constructor(elements: Array<Element>) {
     // Fill up the database with 100 users.
     each(elements, (elem) => {
+      console.log(elem.id, elem.witness)
     	this.addElement(elem);
     });
     console.log(this.data.slice());
@@ -156,7 +157,7 @@ export class ElementsDataSource extends DataSource<any> {
       let propertyB: any = '';
 
       switch (this._sort.active) {
-        case 'witness_name': [propertyA, propertyB] = [a.witness_name, b.witness_name]; break;
+        case 'witness_name': [propertyA, propertyB] = [a.witness.witness_name, b.witness.witness_name]; break;
         case 'category': [propertyA, propertyB] = [a.category, b.category]; break;
         case 'side': [propertyA, propertyB] = [a.side, b.side]; break;
         case 'z_score': [propertyA, propertyB] = [a.score.average_z, b.score.average_z]; break;
