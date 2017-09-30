@@ -1,10 +1,14 @@
-<md-sidenav-container>
+<md-sidenav-container fullscreen>
   <md-sidenav #sidenav >
   Navigation</md-sidenav>
   <div class="content">
     <!-- Nav Bar -->
     <md-toolbar color="primary">
-      <h3>VaMT Datalab</h3>
+      <span>VaMT Datalab</span>
+      <div style="margin-left:25%;">
+      	<button md-button [routerLink]="['/competitors']">Competitors</button>
+      	<button md-button [routerLink]="['/cases']">Cases</button>
+  	  </div>
     </md-toolbar>
     <router-outlet></router-outlet>
   </div>
