@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import { CompetitorsService } from '../competitors.service';
+import { CreateCompetitorComponent } from '../create-competitor/create-competitor.component';
 import { Competitor } from '../../config/models';
 @Component({
   selector: 'competitor-list',
@@ -10,7 +12,7 @@ import { Competitor } from '../../config/models';
 })
 export class CompetitorListComponent implements OnInit {
 
-  constructor(private competitorsService: CompetitorsService) { }
+  constructor(private competitorsService: CompetitorsService, private dialog: MatDialog) { }
   public competitors: Array<Competitor> = [];
   public loading: boolean = false;
   public activeCompetitor: Competitor;
@@ -18,6 +20,16 @@ export class CompetitorListComponent implements OnInit {
 
   ngOnInit() {
   	this.loadCompetitors();
+  }
+
+  showCreateDialog() {
+    let dialogRef = this.dialog.open(CreateCompetitorComponent, {
+      height: '500px',
+      width: '500px'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    });  
   }
 
   loadCompetitors() {

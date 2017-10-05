@@ -6,7 +6,7 @@
 			<mat-form-field fxFlex="80">
 				<input matInput #keyword placeholder="Competitor name" >
 			</mat-form-field>
-			<button mat-icon-button matTooltip="Create Competitor">
+			<button mat-icon-button matTooltip="Create Competitor" (click)="showCreateDialog()">
 				<mat-icon>add</mat-icon>
 			</button>
 			<div fxFlex="10" style="z-index: 10; padding-left: 5%;">

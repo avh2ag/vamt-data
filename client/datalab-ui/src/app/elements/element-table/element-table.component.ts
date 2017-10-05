@@ -93,10 +93,8 @@ export class ElementsDatabase {
   constructor(elements: Array<Element>) {
     // Fill up the database with 100 users.
     each(elements, (elem) => {
-      console.log(elem.id, elem.witness)
     	this.addElement(elem);
     });
-    console.log(this.data.slice());
   }
 
   /** Adds a new user to the database. */

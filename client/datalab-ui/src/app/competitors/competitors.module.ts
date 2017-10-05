@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { MatCardModule, MatProgressBarModule, MatFormFieldModule,
  MatIconModule, MatChipsModule, MatCheckboxModule,
- MatInputModule, MatButtonModule, MatTabsModule, MatTooltipModule } from '@angular/material';
+ MatInputModule, MatButtonModule, MatTabsModule,
+ MatTooltipModule, MatDialogModule } from '@angular/material';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { ElementsModule } from '../elements/elements.module';
 import { CompetitorsService } from './competitors.service';
@@ -31,7 +32,7 @@ import { CreateCompetitorComponent } from './create-competitor/create-competitor
     MatChipsModule,
     MatCheckboxModule, MatInputModule, 
     MatButtonModule, MatTooltipModule,
-    MatTabsModule, 
+    MatTabsModule, MatDialogModule,
     FlexLayoutModule,
     ElementsModule
   ],
@@ -39,6 +40,7 @@ import { CreateCompetitorComponent } from './create-competitor/create-competitor
   	CompetitorsService
   ],
   bootstrap: [CompetitorListComponent],
-  exports: [CompetitorListComponent]
+  exports: [CompetitorListComponent],
+  entryComponents: [CreateCompetitorComponent]
 })
 export class CompetitorModule { }
