@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { MatCardModule, MatProgressBarModule, MatFormFieldModule,
  MatIconModule, MatChipsModule, MatTableModule, 
- MatPaginatorModule, MatInputModule, MatButtonModule } from '@angular/material';
+ MatPaginatorModule, MatInputModule, MatButtonModule, MatSortModule } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { ElementTableComponent } from './element-table/element-table.component';
@@ -17,7 +17,7 @@ import { ElementTableComponent } from './element-table/element-table.component';
     HttpModule,
     MatCardModule, MatProgressBarModule, MatFormFieldModule,
     MatIconModule, MatChipsModule, MatTableModule, MatPaginatorModule,
-    MatInputModule, MatButtonModule,
+    MatInputModule, MatButtonModule, MatSortModule,
     CdkTableModule,
     FlexLayoutModule
   ],
