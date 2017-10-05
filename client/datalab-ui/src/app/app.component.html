@@ -1,18 +1,18 @@
-<md-sidenav-container fullscreen>
-  <md-sidenav #sidenav >
-  Navigation</md-sidenav>
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav >
+  Navigation</mat-sidenav>
   <div class="content">
     <!-- Nav Bar -->
-    <md-toolbar color="primary">
+    <mat-toolbar color="primary">
       <span>VaMT Datalab</span>
       <div style="margin-left:25%;">
-      	<button md-button [routerLink]="['competitors']">Competitors</button>
-      	<button md-button [routerLink]="['cases']">Cases</button>
+      	<button mat-button [routerLink]="['competitors']">Competitors</button>
+      	<button mat-button [routerLink]="['cases']">Cases</button>
   	  </div>
-    </md-toolbar>
+    </mat-toolbar>
     <router-outlet></router-outlet>
   </div>
-</md-sidenav-container>
+</mat-sidenav-container>
 
 
 

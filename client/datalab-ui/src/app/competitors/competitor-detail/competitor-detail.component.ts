@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { Competitor, Tournament, Element } from '../../config/models';
 import { CompetitorsService } from '../competitors.service';
-import { MdCheckbox } from '@angular/material';
+import { MatCheckbox } from '@angular/material';
 @Component({
   selector: 'competitor-detail',
   templateUrl: './competitor-detail.component.html',
@@ -11,7 +11,7 @@ export class CompetitorDetailComponent implements OnInit {
   @Input() activeCompetitor: Competitor;  
   @ViewChild('competitorYear') year: ElementRef;
   @ViewChild('name') name: ElementRef;
-  @ViewChild(MdCheckbox) checkbox: MdCheckbox
+  @ViewChild(MatCheckbox) checkbox: MatCheckbox
   public editMode: boolean = false;
   constructor(private competitorsService: CompetitorsService) { }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { Element, Competitor } from '../../config/models';
 import { DataSource } from '@angular/cdk/collections';
-import { MdSort, MdPaginator } from '@angular/material';
+import { MatSort, MatPaginator } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { each } from 'lodash';
@@ -20,8 +20,8 @@ import { CompetitorsService } from '../../competitors/competitors.service';
 })
 export class ElementTableComponent implements OnInit {
   @Input() elementsList: Array<Element>; 
-  @ViewChild(MdPaginator) paginator: MdPaginator;
-  @ViewChild(MdSort) sort: MdSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
   @ViewChild('filter') filter: ElementRef;
   elementsDatabase;
   dataSource: ElementsDataSource | null;
@@ -119,8 +119,8 @@ export class ElementsDataSource extends DataSource<any> {
   get filter(): string { return this._filterChange.value; }
   set filter(filter: string) { this._filterChange.next(filter); }
   public total: Number = 0;
-  constructor(private _elementsDatabase: ElementsDatabase, private _sort: MdSort,
-  	private _paginator: MdPaginator) {
+  constructor(private _elementsDatabase: ElementsDatabase, private _sort: MatSort,
+  	private _paginator: MatPaginator) {
     super();
   }
 
@@ -128,7 +128,7 @@ export class ElementsDataSource extends DataSource<any> {
   connect(): Observable<Element[]> {
     const displayDataChanges = [
       this._elementsDatabase.dataChange,
-      this._sort.mdSortChange,
+      this._sort.sortChange,
       this._paginator.page,
       this._filterChange,
     ];

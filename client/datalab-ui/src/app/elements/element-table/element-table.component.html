@@ -1,56 +1,56 @@
 <div class="container">
 	<div class="layout-row">
-	    <md-form-field floatPlaceholder="never" fxFlex="40">
-	      <input mdInput #filter placeholder="Filter users">
-	    </md-form-field>
-	    <md-paginator fxFlex="60" #paginator
+	    <mat-form-field floatPlaceholder="never" fxFlex="40">
+	      <input matInput #filter placeholder="Filter users">
+	    </mat-form-field>
+	    <mat-paginator fxFlex="60" #paginator
 		        [length]="totalResults"
 		        [pageIndex]="pageIndex"
 		        [pageSize]="pageSize"
 		        [pageSizeOptions]="pageSizeOptions">
-		</md-paginator>	
+		</mat-paginator>	
   	</div>
 
-	<md-table #table [dataSource]="dataSource" mdSort>
+	<mat-table #table [dataSource]="dataSource" matSort>
 
 	    <!--- Note that these columns can be defined in any order.
 	          The actual rendered columns are set as a property on the row definition" -->
 	    <ng-container cdkColumnDef="date">
-	      <md-header-cell *cdkHeaderCellDef md-sort-header>Date</md-header-cell>
-	      <md-cell *cdkCellDef="let row"> {{ row.tournament.tournament_date | date}} </md-cell>
+	      <mat-header-cell *cdkHeaderCellDef mat-sort-header>Date</mat-header-cell>
+	      <mat-cell *cdkCellDef="let row"> {{ row.tournament.tournament_date | date}} </mat-cell>
 	    </ng-container>
 
 	    <ng-container cdkColumnDef="witness_name">
-	      <md-header-cell *cdkHeaderCellDef md-sort-header>Witness</md-header-cell>
-	      <md-cell *cdkCellDef="let row" > {{ row.witness.witness_name || "N/A" }} </md-cell>
+	      <mat-header-cell *cdkHeaderCellDef mat-sort-header>Witness</mat-header-cell>
+	      <mat-cell *cdkCellDef="let row" > {{ row.witness.witness_name || "N/A" }} </mat-cell>
 	    </ng-container>    
 
 	   	<ng-container cdkColumnDef="category">
-	      <md-header-cell *cdkHeaderCellDef md-sort-header>Category</md-header-cell>
-	      <md-cell *cdkCellDef="let row"> {{ row.category || "N/A" }} </md-cell>
+	      <mat-header-cell *cdkHeaderCellDef mat-sort-header>Category</mat-header-cell>
+	      <mat-cell *cdkCellDef="let row"> {{ row.category || "N/A" }} </mat-cell>
 	    </ng-container> 
 
 	   	<ng-container cdkColumnDef="role_type">
-	      <md-header-cell *cdkHeaderCellDef md-sort-header>Role</md-header-cell>
-	      <md-cell *cdkCellDef="let row"> {{ row.role_type || "N/A" }} </md-cell>
+	      <mat-header-cell *cdkHeaderCellDef mat-sort-header>Role</mat-header-cell>
+	      <mat-cell *cdkCellDef="let row"> {{ row.role_type || "N/A" }} </mat-cell>
 	    </ng-container> 
 
 	    <ng-container cdkColumnDef="z_score">
-	      <md-header-cell *cdkHeaderCellDef md-sort-header>Z Avg</md-header-cell>
-	      <md-cell *cdkCellDef="let row"> {{ row.score.average_z || '0' }} </md-cell>
+	      <mat-header-cell *cdkHeaderCellDef mat-sort-header>Z Avg</mat-header-cell>
+	      <mat-cell *cdkCellDef="let row"> {{ row.score.average_z || '0' }} </mat-cell>
 	    </ng-container>    
 
 	    <ng-container cdkColumnDef="raw_score">
-	      <md-header-cell *cdkHeaderCellDef md-sort-header>Raw Score</md-header-cell>
-	      <md-cell *cdkCellDef="let row"> {{ row.score.raw_score || "N/A" }} </md-cell>
+	      <mat-header-cell *cdkHeaderCellDef mat-sort-header>Raw Score</mat-header-cell>
+	      <mat-cell *cdkCellDef="let row"> {{ row.score.raw_score || "N/A" }} </mat-cell>
 	    </ng-container> 	    
 
 	    <ng-container cdkColumnDef="side">
-	      <md-header-cell *cdkHeaderCellDef md-sort-header>Side</md-header-cell>
-	      <md-cell *cdkCellDef="let row"> {{ row.side || "N/A" }} </md-cell>
+	      <mat-header-cell *cdkHeaderCellDef mat-sort-header>Side</mat-header-cell>
+	      <mat-cell *cdkCellDef="let row"> {{ row.side || "N/A" }} </mat-cell>
 	    </ng-container>  
 
-	    <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
-	    <md-row class="hover-highlight" *cdkRowDef="let row; columns: displayedColumns;"></md-row>
-	 </md-table>
+	    <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+	    <mat-row class="hover-highlight" *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
+	 </mat-table>
 </div>

@@ -1,38 +1,38 @@
-<md-card class="competitor-details">
-	<md-card-title class="layout-padding" style="margin-bottom:0;">
+<mat-card class="competitor-details">
+	<mat-card-title class="layout-padding" style="margin-bottom:0;">
 <!-- 			<span *ngIf="!editMode" fxFlex="70">{{ activeCompetitor.first_name }}
 			</span> -->
-			<md-form-field fxFlex="50">
-				<input mdInput #name [value]="activeCompetitor.name" [readonly]="!editMode">
-			</md-form-field>
+			<mat-form-field fxFlex="50">
+				<input matInput #name [value]="activeCompetitor.name" [readonly]="!editMode">
+			</mat-form-field>
 			<span fxFlex="5"></span>
-			<md-form-field fxFlex="15">
-	    		<input mdInput #competitorYear placeholder="Grad Year" [value]="activeCompetitor.grad_year" [readonly]="!editMode">
-	  		</md-form-field>
-	  		<md-checkbox style="padding-top: 4%;" *ngIf="editMode" #checkBox [checked]="activeCompetitor.active" >Active</md-checkbox>
+			<mat-form-field fxFlex="15">
+	    		<input matInput #competitorYear placeholder="Grad Year" [value]="activeCompetitor.grad_year" [readonly]="!editMode">
+	  		</mat-form-field>
+	  		<mat-checkbox style="padding-top: 4%;" *ngIf="editMode" #checkBox [checked]="activeCompetitor.active" >Active</mat-checkbox>
 			<span fxFlex></span>
-			<button *ngIf="!editMode" md-icon-button (click)="enableEditMode()">
-				<md-icon >edit</md-icon>
+			<button *ngIf="!editMode" mat-icon-button (click)="enableEditMode()">
+				<mat-icon >edit</mat-icon>
 			</button>
-			<button *ngIf="editMode" md-icon-button (click)="cancelEdit()">
-				<md-icon>cancel</md-icon>
+			<button *ngIf="editMode" mat-icon-button (click)="cancelEdit()">
+				<mat-icon>cancel</mat-icon>
 			</button>
-			<button *ngIf="editMode" md-icon-button (click)="save()">
-				<md-icon style="line-height:18px">save</md-icon>
+			<button *ngIf="editMode" mat-icon-button (click)="save()">
+				<mat-icon style="line-height:18px">save</mat-icon>
 			</button>
-	</md-card-title>
-	<md-card-content>
-		<md-tab-group >
-			<md-tab label="Elements">
+	</mat-card-title>
+	<mat-card-content>
+		<mat-tab-group >
+			<mat-tab label="Elements">
 				<element-table [elementsList]="activeCompetitor.elements" ></element-table>
-			</md-tab>
-			<md-tab label="Charts">
+			</mat-tab>
+			<mat-tab label="Charts">
 				Charts plotting performance over time/role
-			</md-tab>
-		</md-tab-group>
+			</mat-tab>
+		</mat-tab-group>
 
-	</md-card-content>
-	<md-card-footer>
+	</mat-card-content>
+	<mat-card-footer>
 		
-	</md-card-footer>
-</md-card>
+	</mat-card-footer>
+</mat-card>

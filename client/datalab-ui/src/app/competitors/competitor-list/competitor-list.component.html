@@ -1,14 +1,14 @@
-<md-progress-bar mode="indeterminate" *ngIf="loading" ></md-progress-bar>
+<mat-progress-bar mode="indeterminate" *ngIf="loading" ></mat-progress-bar>
 <div class="layout-row" *ngIf="!loading">
 	<!-- preview, selection, filters -->
 	<div class="layout-column" fxFlex="33" *ngIf="previewVisible">
 		<div class="layout-row layout-padding">
-			<md-form-field fxFlex="90">
-				<input mdInput #keyword placeholder="Competitor name" >
-			</md-form-field>
+			<mat-form-field fxFlex="90">
+				<input matInput #keyword placeholder="Competitor name" >
+			</mat-form-field>
 			<div fxFlex="10" style="z-index: 10; padding-left: 5%;">
-				<button md-icon-button md-raised-button color="accent" (click)="hidePreview()">
-						<md-icon>chevron_left</md-icon>
+				<button mat-icon-button mat-raised-button color="accent" (click)="hidePreview()">
+						<mat-icon>chevron_left</mat-icon>
 				</button>
 			</div>
 		</div>
@@ -18,8 +18,8 @@
 		</div>
 	</div>
 	<div fxFlex="5" *ngIf="!previewVisible">
-		<button md-icon-button md-raised-button color="accent" (click)="showPreview()">
-			<md-icon>chevron_right</md-icon>
+		<button mat-icon-button mat-raised-button color="accent" (click)="showPreview()">
+			<mat-icon>chevron_right</mat-icon>
 		</button>
 	</div>
 	<!-- Detail Pane -->

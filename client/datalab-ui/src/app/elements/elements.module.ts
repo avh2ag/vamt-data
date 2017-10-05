@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import { MaterialModule } from '@angular/material';
+import { MatCardModule, MatProgressBarModule, MatFormFieldModule,
+ MatIconModule, MatChipsModule, MatTableModule, 
+ MatPaginatorModule, MatInputModule, MatButtonModule } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { ElementTableComponent } from './element-table/element-table.component';
@@ -13,7 +15,9 @@ import { ElementTableComponent } from './element-table/element-table.component';
   imports: [
     BrowserModule,
     HttpModule,
-    MaterialModule,
+    MatCardModule, MatProgressBarModule, MatFormFieldModule,
+    MatIconModule, MatChipsModule, MatTableModule, MatPaginatorModule,
+    MatInputModule, MatButtonModule,
     CdkTableModule,
     FlexLayoutModule
   ],

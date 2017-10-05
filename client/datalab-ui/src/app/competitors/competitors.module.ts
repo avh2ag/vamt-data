@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import { MaterialModule } from '@angular/material';
+import { MatCardModule, MatProgressBarModule, MatFormFieldModule,
+ MatIconModule, MatChipsModule, MatCheckboxModule, MatInputModule, MatButtonModule } from '@angular/material';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { ElementsModule } from '../elements/elements.module';
 import { CompetitorsService } from './competitors.service';
@@ -20,7 +21,12 @@ import { CompetitorPipe } from './competitor-list/competitor-filter.pipe';
   imports: [
     BrowserModule,
     HttpModule,
-    MaterialModule,
+    MatCardModule,
+    MatProgressBarModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatChipsModule,
+    MatCheckboxModule, MatInputModule, MatButtonModule,
     FlexLayoutModule,
     ElementsModule
   ],

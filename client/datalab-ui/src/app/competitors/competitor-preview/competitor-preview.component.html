@@ -1,10 +1,10 @@
-<md-card class="hover-highlight">
-	<md-card-title class="layout-padding">
+<mat-card class="hover-highlight">
+	<mat-card-title class="layout-padding">
 		<span>{{ competitor.name }}</span>
-		<md-chip-list>
-			<md-chip *ngIf="competitor.active" color="primary">Current Competitor</md-chip>
-			<md-chip color="accent">Year: {{ competitor.grad_year || 'Unentered' }}</md-chip>
-			<md-chip color="accent">Elements: {{ competitor.elements.length }}</md-chip>
-		</md-chip-list> 
-	</md-card-title>
-</md-card>
+		<mat-chip-list>
+			<mat-chip *ngIf="competitor.active" color="primary">Current Competitor</mat-chip>
+			<mat-chip color="accent">Year: {{ competitor.grad_year || 'Unentered' }}</mat-chip>
+			<mat-chip color="accent">Elements: {{ competitor.elements.length }}</mat-chip>
+		</mat-chip-list> 
+	</mat-card-title>
+</mat-card>
