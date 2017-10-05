@@ -25,6 +25,10 @@ class ScoreViewset(viewsets.ModelViewSet):
 	serializer_class = ScoreSerializer
 	queryset = Score.objects.all()
 
+class CaseViewset(viewsets.ModelViewSet):
+	serializer_class = CaseSerializer
+	queryset = Case.objects.all()
+
 class CompetitorViewset(viewsets.ModelViewSet):
 	serializer_class = CompetitorSerializer
 	queryset = Competitor.objects.all()

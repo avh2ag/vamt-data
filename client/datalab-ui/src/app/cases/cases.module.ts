@@ -4,6 +4,7 @@ import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { CasesListComponent } from './cases-list/cases-list.component';
+import { CasesService } from './cases.service';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { CasesListComponent } from './cases-list/cases-list.component';
 
   ],
   providers: [
+    CasesService
   ],
   bootstrap: [CasesListComponent],
   exports: [CasesListComponent]

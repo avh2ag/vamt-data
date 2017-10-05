@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CasesService } from '../cases.service';
+import { Case } from '../../config/models';
 
 @Component({
   selector: 'app-cases-list',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CasesListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private casesService: CasesService) { }
 
   ngOnInit() {
+  	this.casesService.getAllCases().subscribe( (resp: Array<Case>) => {
+  		console.log(resp);
+  	});
   }
 
 }

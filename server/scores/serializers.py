@@ -5,7 +5,17 @@ class WitnessSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Witness
 		fields = (
-			'id', 'witness_name', 'witness_type'
+			'id', 'witness_name', 'witness_type')
+
+class CaseSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Case
+		p_witnesses = WitnessSerializer(many=True)
+		d_witnesses = WitnessSerializer(many=True)
+		swing_witnesses = WitnessSerializer(many=True)
+		fields = (
+			'id', 'case_name', 'd_witnesses', 'p_witnesses', 'swing_witnesses',
+			'case_year', 'case_type'
 		)
 
 class ScoreSerializer(serializers.ModelSerializer):

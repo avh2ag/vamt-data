@@ -12,6 +12,7 @@ router.register(r'elements', ElementViewset)
 router.register(r'competitors', CompetitorViewset)
 router.register(r'tournaments', TournamentViewset)
 router.register(r'scores', ScoreViewset)
+router.register(r'cases', CaseViewset)
 
 urlpatterns = [                 
     # here we are not using pattern module like in previous django versions

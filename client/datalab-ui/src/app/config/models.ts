@@ -24,6 +24,17 @@ export class Witness {
 	public witness_name: string;
 }
 
+export class Case {
+	constructor() {};
+	public id: Number;
+	public case_name: string;
+	public case_type: string;
+	public case_year: Number;
+	public d_witnesses: Array<Witness>;
+	public p_witnesses: Array<Witness>;
+	public swing_witnesses: Array<Witness>;
+}
+
 export class Element {
 	constructor() {};
 	public tournament: Tournament;
