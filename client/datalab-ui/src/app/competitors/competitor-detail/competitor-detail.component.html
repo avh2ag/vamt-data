@@ -11,7 +11,7 @@
 	  		</mat-form-field>
 	  		<mat-checkbox style="padding-top: 4%;" *ngIf="editMode" #checkBox [checked]="activeCompetitor.active" >Active</mat-checkbox>
 			<span fxFlex></span>
-			<button *ngIf="!editMode" mat-icon-button (click)="enableEditMode()">
+			<button *ngIf="!editMode" mat-icon-button (click)="enableEditMode()" [matTooltip]="'Edit ' + activeCompetitor.name">
 				<mat-icon >edit</mat-icon>
 			</button>
 			<button *ngIf="editMode" mat-icon-button (click)="cancelEdit()">

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { MatCardModule, MatProgressBarModule, MatFormFieldModule,
  MatIconModule, MatChipsModule, MatCheckboxModule,
- MatInputModule, MatButtonModule, MatTabsModule } from '@angular/material';
+ MatInputModule, MatButtonModule, MatTabsModule, MatTooltipModule } from '@angular/material';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { ElementsModule } from '../elements/elements.module';
 import { CompetitorsService } from './competitors.service';
@@ -11,13 +11,15 @@ import { CompetitorDetailComponent } from './competitor-detail/competitor-detail
 import { CompetitorListComponent } from './competitor-list/competitor-list.component';
 import { CompetitorPreviewComponent } from './competitor-preview/competitor-preview.component';
 import { CompetitorPipe } from './competitor-list/competitor-filter.pipe';
+import { CreateCompetitorComponent } from './create-competitor/create-competitor.component';
 
 @NgModule({
   declarations: [
     CompetitorListComponent,
     CompetitorDetailComponent,
     CompetitorPreviewComponent,
-    CompetitorPipe
+    CompetitorPipe,
+    CreateCompetitorComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,7 @@ import { CompetitorPipe } from './competitor-list/competitor-filter.pipe';
     MatIconModule,
     MatChipsModule,
     MatCheckboxModule, MatInputModule, 
-    MatButtonModule,
+    MatButtonModule, MatTooltipModule,
     MatTabsModule, 
     FlexLayoutModule,
     ElementsModule
