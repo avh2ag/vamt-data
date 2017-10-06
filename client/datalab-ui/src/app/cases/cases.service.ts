@@ -11,7 +11,6 @@ import { Case } from '../config/models';
 export class CasesService {
   private _env: Env = new Env();
   private _baseUrl: string = this._env.getAPIHost() + 'cases';
-
   constructor(private http: Http) {}
 
   public getAllCases() {

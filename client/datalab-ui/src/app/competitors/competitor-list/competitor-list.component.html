@@ -19,6 +19,9 @@
 		 [ngClass]="{ 'selected-competitor' : activeCompetitor.id == individual.id }" >
 			<competitor-preview  [competitor]="individual"> </competitor-preview>
 		</div>
+		<div *ngIf="competitors.length == 0" class="layout-padding">
+			<span>No competitors saved.</span>
+		</div>
 	</div>
 	<div fxFlex="5" *ngIf="!previewVisible">
 		<button mat-icon-button mat-raised-button color="accent" (click)="showPreview()">

@@ -41,7 +41,10 @@ export class CompetitorListComponent implements OnInit {
 
   onCompetitorsLoad(competitorList: Array<Competitor>): void {
       this.competitors = competitorList;
-      this.selectCompetitor(this.competitors[0]);
+      if (this.competitors.length > 0) {
+        this.selectCompetitor(this.competitors[0]);
+      }
+      
   }
 
   selectCompetitor(competitor: Competitor): void {
