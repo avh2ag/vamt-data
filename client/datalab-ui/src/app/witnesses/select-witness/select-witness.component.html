@@ -1,3 +1,10 @@
-<p>
-  select-witness works!
-</p>
+<form >
+  <mat-form-field fxFlex="60">
+    <input type="text" placeholder="Witness Name" aria-label="Witness Name" matInput [formControl]="witnessControl" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{ option.witness_name }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>

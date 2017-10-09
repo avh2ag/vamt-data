@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateWitnessComponent } from './create-witness/create-witness.component';
 import { MatSnackBarModule, MatIconModule, MatButtonModule,
 MatFormFieldModule, MatInputModule, MatSelectModule,
-MatTooltipModule } from '@angular/material';
+MatTooltipModule, MatAutocompleteModule } from '@angular/material';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { SelectWitnessComponent } from './select-witness/select-witness.component';
 
@@ -15,6 +15,7 @@ import { SelectWitnessComponent } from './select-witness/select-witness.componen
   	MatSnackBarModule, MatIconModule, MatButtonModule,
   	MatFormFieldModule, MatInputModule, MatSelectModule,
   	FormsModule, ReactiveFormsModule, MatTooltipModule,
+    MatAutocompleteModule,
     CommonModule
   ],
   providers: [
