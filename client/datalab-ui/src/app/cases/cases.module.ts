@@ -10,6 +10,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { CasesListComponent } from './cases-list/cases-list.component';
 import { CasesService } from './cases.service';
 import { CreateCaseComponent } from './create-case/create-case.component';
+import { WitnessesModule } from '../witnesses/witnesses.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { CreateCaseComponent } from './create-case/create-case.component';
   imports: [
     BrowserModule,
     HttpModule,
+    WitnessesModule,
     FlexLayoutModule, FormsModule, ReactiveFormsModule, 
     MatCardModule, MatProgressBarModule, MatFormFieldModule,
     MatIconModule, MatChipsModule, MatCheckboxModule,

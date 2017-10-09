@@ -13,6 +13,10 @@ from rest_framework.response import Response
 from rest_framework import status
 
 
+class WitnessViewset(viewsets.ModelViewSet):
+	serializer_class = WitnessSerializer
+	queryset = Witness.objects.all()
+
 class ElementViewset(viewsets.ModelViewSet):
 	serializer_class = ElementSerializer
 	queryset = Element.objects.all() 	

@@ -1,11 +1,11 @@
 <h3 mat-dialog-title>Create Case</h3>
 <mat-dialog-content>
 	<form [formGroup]="caseForm" class="layout-row layout-padding">
-		<mat-form-field fxFlex="75">
+		<mat-form-field fxFlex="45">
 			<input matInput placeholder="Case Name" formControlName="name">
 		</mat-form-field>
 		<span fxFlex="5"></span>
-		<div class="mat-input-wrapper" fxFlex="15">
+		<div class="mat-input-wrapper" fxFlex="20">
       		<div class="mat-input-infix">
 				<mat-select placeholder="Case Type" formControlName="type" >
 					<mat-option value="Civil" selected>Civil</mat-option>
@@ -13,6 +13,10 @@
 				</mat-select>
 			</div>
 		</div>
+		<span fxFlex></span>
+		<mat-form-field fxFlex="20">
+			<input matInput placeholder="Case Year" formControlName="year">
+		</mat-form-field>
 	</form>
 </mat-dialog-content>
 
