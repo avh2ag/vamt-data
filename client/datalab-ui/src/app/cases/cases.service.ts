@@ -10,7 +10,7 @@ import { Case } from '../config/models';
 @Injectable()
 export class CasesService {
   private _env: Env = new Env();
-  private _baseUrl: string = this._env.getAPIHost() + 'cases';
+  private _baseUrl: string = this._env.getAPIHost() + 'cases/';
   constructor(private http: Http) {}
 
   public getAllCases() {
@@ -23,7 +23,12 @@ export class CasesService {
 
   public createCase(caseData) {
     return this.http.post(this._baseUrl, {
-
+      case_name: caseData["name"],
+      case_type: caseData["type"],
+      case_year: caseData["year"],
+      p_witnesses: caseData["p_wit"],
+      d_witnesses: caseData["d_wit"],
+      swing_witnesses: caseData["s_wit"]
     }).map(resp => {
       return resp.json();
     }).catch( err => {

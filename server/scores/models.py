@@ -12,7 +12,7 @@ class Case(models.Model):
 	case_name = models.TextField(blank=False)
 	d_witnesses = models.ManyToManyField(Witness, related_name="d")
 	p_witnesses = models.ManyToManyField(Witness, related_name="p")
-	swing_witnesses = models.ManyToManyField(Witness, related_name="swing")
+	swing_witnesses = models.ManyToManyField(Witness, related_name="swing", blank=True)
 	case_year = models.IntegerField(null=False)
 	case_type = models.TextField(blank=False) #criminal | civil
 

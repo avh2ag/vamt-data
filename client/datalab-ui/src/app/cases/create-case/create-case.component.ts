@@ -4,7 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material';
 import { CasesService } from '../cases.service';
 import { WitnessService } from '../../witnesses/witness.service';
 import { Case, Witness, Competitor } from '../../config/models';
-import { remove } from 'lodash'
+import { remove, map } from 'lodash'
 @Component({
   selector: 'create-case',
   templateUrl: './create-case.component.html',
@@ -44,6 +44,7 @@ export class CreateCaseComponent implements OnInit {
     });
   }
 
+
   showCreateWitness() {
     this.createWitness = true;
   }
@@ -52,9 +53,27 @@ export class CreateCaseComponent implements OnInit {
     this.createWitness = false;
   }
 
+  extractIds(witnessList: Witness[]) {
+    return map(witnessList, witness => {
+      return witness.id;
+    });
+  }
+
   createCase() {
-    console.log(this.p_witnesses);
-  	//this.casesService.createCase();
+    console.log()
+    const caseData = {
+      name: this.caseForm.value.name,
+      type: this.caseForm.value.type,
+      year: this.caseForm.value.year,
+      p_wit: this.extractIds(this.p_witnesses),
+      d_wit: this.extractIds(this.d_witnesses),
+      s_wit: this.extractIds(this.swing_witnesses)
+    };
+    this.casesService.createCase(caseData).subscribe(resp => {
+      console.log(resp);
+    }, err => {
+      console.log(err);
+    })
   }
 
   addWitness(witness, witnessList) {
