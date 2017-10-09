@@ -20,9 +20,9 @@
 	</form>
 	<mat-tab-group>
 		<mat-tab label="P Witnesses">
-			<span *ngIf="p_witnesses.length == 0">No P Witnesses Added.</span>
 			<!-- Add Witness Component -->
 			<create-witness></create-witness>
+			<span *ngIf="p_witnesses.length == 0">No P Witnesses Added.</span>
 			<mat-list>
 				<mat-list-item *ngFor="let witness of p_witnesses">
 				{{ witness.witness_name }}

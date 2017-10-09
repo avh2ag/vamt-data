@@ -1,3 +1,23 @@
-<p>
-  create-witness works!
-</p>
+<form class="layout-row" [formGroup]="witnessForm" >
+	<mat-form-field fxFlex="50">
+		<input matInput placeholder="New Witness Name" formControlName="name">
+	</mat-form-field>
+	<span fxFlex="5"></span>
+	<div class="mat-input-wrapper" fxFlex="25">
+      	<div class="mat-input-infix">
+			<mat-select placeholder="Type" formControlName="type">
+				<mat-option value="Character">Character</mat-option>
+				<mat-option value="Cop">Cop</mat-option>
+				<mat-option value="Crying">Crying</mat-option>
+				<mat-option value="Expert">Expert</mat-option>
+				<mat-option value="Party">Party</mat-option>
+			</mat-select>
+		</div>
+	</div>
+	<span fxFlex="5"></span>
+	<div class="layout-padding" style="padding-top:2%;">
+		<button mat-icon-button mat-raised-button color="primary" [disabled]="!witnessForm.valid" (click)="createWitness()">
+			<mat-icon>add</mat-icon>
+		</button>	
+	</div>
+</form>
