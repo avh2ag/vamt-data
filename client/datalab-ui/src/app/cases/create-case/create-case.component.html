@@ -20,7 +20,7 @@
 		<mat-tab label="P Witnesses">
 			<!-- Add Witness Component -->
 			<div *ngIf="!createWitness" class="layout-row">
-				<select-witness fxFlex="80"></select-witness>
+				<select-witness [outputList]="p_witnesses" fxFlex="80"></select-witness>
 				<button mat-button color="primary" (click)="showCreateWitness()">Create New Witness</button>
 			</div>
 			<div *ngIf="createWitness" class="layout-row">
