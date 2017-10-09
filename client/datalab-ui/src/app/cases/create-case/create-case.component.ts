@@ -4,7 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material';
 import { CasesService } from '../cases.service';
 import { WitnessService } from '../../witnesses/witness.service';
 import { Case, Witness, Competitor } from '../../config/models';
-
+import { remove } from 'lodash'
 @Component({
   selector: 'create-case',
   templateUrl: './create-case.component.html',
@@ -60,6 +60,12 @@ export class CreateCaseComponent implements OnInit {
   addWitness(witness, witnessList) {
     witnessList.push(witness);
     console.log(witnessList);
+  }
+
+  removeWitness(witnessToRemove, witnessList) {
+    witnessList = remove(witnessList, witness => {
+      return witness.id == witnessToRemove.id;
+    });
   }
 
   cancel() {
