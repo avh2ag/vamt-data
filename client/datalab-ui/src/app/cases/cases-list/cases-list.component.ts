@@ -4,7 +4,7 @@ import { CasesService } from '../cases.service';
 import { Case } from '../../config/models';
 import { CreateCaseComponent } from '../create-case/create-case.component';
 @Component({
-  selector: 'app-cases-list',
+  selector: 'cases-list',
   templateUrl: './cases-list.component.html',
   styleUrls: ['./cases-list.component.css']
 })
