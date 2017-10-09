@@ -4,7 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule, MatProgressBarModule, MatFormFieldModule,
  MatIconModule, MatChipsModule, MatCheckboxModule,
  MatInputModule, MatButtonModule, MatTabsModule,
- MatTooltipModule, MatDialogModule, MatSelectModule } from '@angular/material';
+ MatTooltipModule, MatDialogModule, MatSelectModule,
+ MatListModule } from '@angular/material';
 import { HttpModule } from '@angular/http';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { CasesListComponent } from './cases-list/cases-list.component';
@@ -26,6 +27,7 @@ import { WitnessesModule } from '../witnesses/witnesses.module';
     MatIconModule, MatChipsModule, MatCheckboxModule,
     MatInputModule, MatButtonModule, MatTabsModule,
     MatTooltipModule, MatDialogModule, MatSelectModule,
+    MatListModule
   ],
   providers: [
     CasesService

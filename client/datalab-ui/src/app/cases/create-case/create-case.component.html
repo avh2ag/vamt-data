@@ -18,6 +18,28 @@
 			<input matInput placeholder="Case Year" formControlName="year">
 		</mat-form-field>
 	</form>
+	<mat-tab-group>
+		<mat-tab label="P Witnesses">
+			<span *ngIf="p_witnesses.length == 0">No P Witnesses Added.</span>
+			<!-- Add Witness Component -->
+			<create-witness></create-witness>
+			<mat-list>
+				<mat-list-item *ngFor="let witness of p_witnesses">
+				{{ witness.witness_name }}
+				</mat-list-item>
+			</mat-list>
+			<mat-divider></mat-divider>			
+		</mat-tab>
+		<mat-tab label="D Witnesses">
+			
+		</mat-tab>
+		<mat-tab label="Swing Witnesses">
+			
+		</mat-tab>
+	</mat-tab-group>
+	<div class="layout-column layout-padding">
+	</div>
+	
 </mat-dialog-content>
 
 <mat-dialog-actions>

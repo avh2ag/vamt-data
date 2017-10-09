@@ -13,6 +13,9 @@ import { Case, Witness, Competitor } from '../../config/models';
 export class CreateCaseComponent implements OnInit {
   caseForm: FormGroup;
   allWitnesses: Array<Witness> = [];
+  p_witnesses: Array<Witness> = [];
+  d_witnesses: Array<Witness> = [];
+  swing_witnesses: Array<Witness> = [];
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialogRef<CreateCaseComponent>,
   	private casesService: CasesService, private witnessService: WitnessService ) { }
 

@@ -9,9 +9,9 @@ import { Witness } from '../config/models';
 
 @Injectable()
 export class WitnessService {
-	
+
   private _env: Env = new Env();
-  private _baseUrl: string = this._env.getAPIHost() + 'witnesses';
+  private _baseUrl: string = this._env.getAPIHost() + 'witnesses/';
   constructor(private http: Http) {}
 
   public getAllWitnesses() {
@@ -21,15 +21,20 @@ export class WitnessService {
       return err.json();
     });
   }
-
-  // public createCase(caseData) {
-  //   return this.http.post(this._baseUrl, {
-
-  //   }).map(resp => {
-  //     return resp.json();
-  //   }).catch( err => {
-  //     return err.json();
-  //   });
-  // }
+  public createWitness(witnessName, witnessType) {
+    let data = {
+      witness_name: witnessName,
+      witness_type: witnessType
+    };
+    return this.http.post(this._baseUrl, {
+      witness_name: witnessName,
+      witness_type: witnessType,
+      headers: 'application/json'
+    }).map(resp => {
+      return resp.json();
+    }).catch( err => {
+      return err.json();
+    });
+  }  
 
 }
