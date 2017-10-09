@@ -31,7 +31,10 @@ export class WitnessService {
       witness_type: witnessType,
       headers: 'application/json'
     }).map(resp => {
-      return resp.json();
+      let createdWitness = resp.json();
+      this.loadedWitnesses.push(createdWitness);
+      this.notifyDataChanged.next(this.loadedWitnesses);
+      return createdWitness;
     }).catch( err => {
       return err.json();
     });

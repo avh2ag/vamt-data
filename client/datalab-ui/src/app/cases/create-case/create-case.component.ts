@@ -17,20 +17,23 @@ export class CreateCaseComponent implements OnInit {
   d_witnesses: Array<Witness> = [];
   swing_witnesses: Array<Witness> = [];
   createWitness: boolean = false;
+  witnessSubscription;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialogRef<CreateCaseComponent>,
   	private casesService: CasesService, private witnessService: WitnessService ) { }
 
   ngOnInit() {
   	this.onFormReset();
+    this.allWitnesses = this.witnessService.loadedWitnesses;
+    this.witnessSubscription = this.witnessService.notifyDataChanged.subscribe((witnesses: Array<Witness>) => {
+      this.allWitnesses = witnesses;
+    });
   	this.loadWitnesses();
   }
 
   loadWitnesses() {
-  	this.witnessService.getAllWitnesses().subscribe(witnesses => {
-  		this.allWitnesses = witnesses;
-  	}, err => {
-  		console.log(err);
-  	});
+  	this.witnessService.getAllWitnesses().subscribe((witnesses: Array<Witness>) => {
+      this.allWitnesses = witnesses;
+    });
   }
 
   onFormReset() {
