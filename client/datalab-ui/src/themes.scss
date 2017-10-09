@@ -22,6 +22,6 @@ $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
 .hover-highlight:hover {
 	background-color: #ffffb2;
 }
-md-card.selected-competitor {
+mat-card.selected-competitor {
 	background: #ffff7f;
 }

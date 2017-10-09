@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule, MatProgressBarModule, MatFormFieldModule,
  MatIconModule, MatChipsModule, MatCheckboxModule,
  MatInputModule, MatButtonModule, MatTabsModule,
- MatTooltipModule, MatDialogModule } from '@angular/material';
+ MatTooltipModule, MatDialogModule, MatSelectModule } from '@angular/material';
 import { HttpModule } from '@angular/http';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { CasesListComponent } from './cases-list/cases-list.component';
@@ -18,11 +19,11 @@ import { CreateCaseComponent } from './create-case/create-case.component';
   imports: [
     BrowserModule,
     HttpModule,
-    FlexLayoutModule,
+    FlexLayoutModule, FormsModule, ReactiveFormsModule, 
     MatCardModule, MatProgressBarModule, MatFormFieldModule,
     MatIconModule, MatChipsModule, MatCheckboxModule,
     MatInputModule, MatButtonModule, MatTabsModule,
-    MatTooltipModule, MatDialogModule
+    MatTooltipModule, MatDialogModule, MatSelectModule,
   ],
   providers: [
     CasesService

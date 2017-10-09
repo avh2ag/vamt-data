@@ -22,7 +22,13 @@ export class CasesService {
   }
 
   public createCase(caseData) {
-    
+    return this.http.post(this._baseUrl, {
+
+    }).map(resp => {
+      return resp.json();
+    }).catch( err => {
+      return err.json();
+    });
   }
 
 

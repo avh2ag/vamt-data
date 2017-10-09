@@ -1,3 +1,22 @@
-<p>
-  create-case works!
-</p>
+<h3 mat-dialog-title>Create Case</h3>
+<mat-dialog-content>
+	<form [formGroup]="caseForm" class="layout-row layout-padding">
+		<mat-form-field fxFlex="75">
+			<input matInput placeholder="Case Name" formControlName="name">
+		</mat-form-field>
+		<span fxFlex="5"></span>
+		<div class="mat-input-wrapper" fxFlex="15">
+      		<div class="mat-input-infix">
+				<mat-select placeholder="Case Type" formControlName="type" >
+					<mat-option value="Civil" selected>Civil</mat-option>
+					<mat-option value="Criminal">Criminal</mat-option>
+				</mat-select>
+			</div>
+		</div>
+	</form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+	<button mat-raised-button color="primary" [disabled]="!caseForm.valid" (click)="createCase()">Create</button>
+	<button mat-raised-button (click)="cancel()">Cancel</button>
+</mat-dialog-actions>
