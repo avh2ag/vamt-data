@@ -4,7 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material';
 import { CasesService } from '../cases.service';
 import { WitnessService } from '../../witnesses/witness.service';
 import { Case, Witness, Competitor } from '../../config/models';
-import { remove, map } from 'lodash'
+import { remove, map, filter } from 'lodash'
 @Component({
   selector: 'create-case',
   templateUrl: './create-case.component.html',
@@ -37,6 +37,9 @@ export class CreateCaseComponent implements OnInit {
   }
 
   onFormReset() {
+    this.p_witnesses = [];
+    this.d_witnesses = [];
+    this.swing_witnesses = [];
     this.caseForm = new FormGroup({
       'name': new FormControl(null, [Validators.required]),
       'type': new FormControl(null, [Validators.required]),
@@ -60,7 +63,6 @@ export class CreateCaseComponent implements OnInit {
   }
 
   createCase() {
-    console.log()
     const caseData = {
       name: this.caseForm.value.name,
       type: this.caseForm.value.type,
@@ -70,15 +72,20 @@ export class CreateCaseComponent implements OnInit {
       s_wit: this.extractIds(this.swing_witnesses)
     };
     this.casesService.createCase(caseData).subscribe(resp => {
-      console.log(resp);
+      this.dialogRef.close(true);
+      this.onFormReset();
     }, err => {
       console.log(err);
     })
   }
 
-  addWitness(witness, witnessList) {
-    witnessList.push(witness);
-    console.log(witnessList);
+  addWitness(witnessToAdd, witnessList) {
+    let presence = filter(witnessList, witness => {
+      return witness.id == witnessToAdd.id;
+    });
+    if (presence.length == 0) {
+      witnessList.push(witnessToAdd);
+    }
   }
 
   removeWitness(witnessToRemove, witnessList) {
