@@ -27,14 +27,12 @@
 				<create-witness fxFlex="90"></create-witness>
 				<button mat-button color="primary" (click)="hideCreateWitness()" >Cancel</button>
 			</div>
-			<mat-list>
-				<mat-list-item *ngFor="let witness of p_witnesses" class="layout-row">
-					<button mat-icon-button (click)="removeWitness(witness, p_witnesses)">
-						<mat-icon>clear</mat-icon>
-					</button>
+			<mat-chip-list>
+				<mat-chip *ngFor="let witness of p_witnesses" color="primary" class="layout-row" (click)="removeWitness(witness, p_witnesses)">
 					<span>{{ witness.witness_name }}</span>
-				</mat-list-item>
-			</mat-list>
+					<mat-icon style="height:20px; width:12px;font-size:inherit;">clear</mat-icon>
+				</mat-chip>
+			</mat-chip-list>
 			<mat-divider></mat-divider>			
 		</mat-tab>
 		<mat-tab label="D Witnesses">
