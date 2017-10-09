@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/startWith';
@@ -11,7 +11,7 @@ import { WitnessService } from '../witness.service';
   styleUrls: ['./select-witness.component.css']
 })
 export class SelectWitnessComponent implements OnInit {
-  @Input() outputList: Array<Witness>;	
+  @Output() onSelect = new EventEmitter<Witness>();	
   witnessSubscription;
   witnessControl = new FormControl();
   options: Array<Witness> = [];
@@ -19,7 +19,6 @@ export class SelectWitnessComponent implements OnInit {
 
   constructor(private witnessService: WitnessService) { }
   ngOnInit() {
-  	console.log(this.outputList);
   	this.options = this.witnessService.loadedWitnesses;
   	this.witnessSubscription = this.witnessService.notifyDataChanged.subscribe((witnesses: Array<Witness>) => {
   		this.options = witnesses;
@@ -42,6 +41,8 @@ export class SelectWitnessComponent implements OnInit {
 
   addWitness() {
   	console.log(this.witnessControl.value);
+  	this.onSelect.emit(this.witnessControl.value);
+  	this.witnessControl.setValue(null);
   }
 
 }

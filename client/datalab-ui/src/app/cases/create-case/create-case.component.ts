@@ -53,7 +53,13 @@ export class CreateCaseComponent implements OnInit {
   }
 
   createCase() {
+    console.log(this.p_witnesses);
   	//this.casesService.createCase();
+  }
+
+  addWitness(witness, witnessList) {
+    witnessList.push(witness);
+    console.log(witnessList);
   }
 
   cancel() {
