@@ -16,7 +16,8 @@
 	</div>
 	<span fxFlex="5"></span>
 	<div class="layout-padding" style="padding-top:2%;">
-		<button mat-icon-button mat-raised-button color="primary" [disabled]="!witnessForm.valid" (click)="createWitness()">
+		<button mat-icon-button mat-raised-button matTooltip="Create witness"
+		color="primary" [disabled]="!witnessForm.valid" (click)="createWitness()">
 			<mat-icon>add</mat-icon>
 		</button>	
 	</div>

@@ -7,6 +7,7 @@ import { MatSnackBarModule, MatIconModule, MatButtonModule,
 MatFormFieldModule, MatInputModule, MatSelectModule,
 MatTooltipModule } from '@angular/material';
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { SelectWitnessComponent } from './select-witness/select-witness.component';
 
 @NgModule({
   imports: [
@@ -19,8 +20,8 @@ import { FlexLayoutModule } from "@angular/flex-layout";
   providers: [
     WitnessService
   ],
-  declarations: [CreateWitnessComponent],
+  declarations: [CreateWitnessComponent, SelectWitnessComponent],
   entryComponents: [CreateWitnessComponent],
-  exports: [CreateWitnessComponent]
+  exports: [CreateWitnessComponent, SelectWitnessComponent]
 })
 export class WitnessesModule { }

@@ -16,6 +16,7 @@ export class CreateCaseComponent implements OnInit {
   p_witnesses: Array<Witness> = [];
   d_witnesses: Array<Witness> = [];
   swing_witnesses: Array<Witness> = [];
+  createWitness: boolean = false;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialogRef<CreateCaseComponent>,
   	private casesService: CasesService, private witnessService: WitnessService ) { }
 
@@ -38,6 +39,14 @@ export class CreateCaseComponent implements OnInit {
       'type': new FormControl(null, [Validators.required]),
       'year': new FormControl(null, [Validators.required])
     });
+  }
+
+  showCreateWitness() {
+    this.createWitness = true;
+  }
+
+  hideCreateWitness() {
+    this.createWitness = false;
   }
 
   createCase() {

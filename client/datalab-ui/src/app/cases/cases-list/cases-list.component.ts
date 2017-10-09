@@ -22,8 +22,7 @@ export class CasesListComponent implements OnInit {
 
   showCreateDialog() {
     let dialogRef = this.dialog.open(CreateCaseComponent, {
-      height: '500px',
-      width: '500px'
+      width: '75%'
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
