@@ -14,6 +14,9 @@
 				</button>
 			</div>
 		</div>
+		<div *ngFor="let case of cases">
+			{{ case.case_name }}
+		</div>
 		<div *ngIf="cases.length == 0">
 			<span>No cases saved.</span>
 		</div>

@@ -12,11 +12,13 @@ import { CasesListComponent } from './cases-list/cases-list.component';
 import { CasesService } from './cases.service';
 import { CreateCaseComponent } from './create-case/create-case.component';
 import { WitnessesModule } from '../witnesses/witnesses.module';
+import { CasesPreviewComponent } from './cases-preview/cases-preview.component';
 
 @NgModule({
   declarations: [
     CasesListComponent,
-    CreateCaseComponent
+    CreateCaseComponent,
+    CasesPreviewComponent
   ],
   imports: [
     BrowserModule,
