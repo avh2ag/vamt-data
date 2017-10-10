@@ -14,8 +14,8 @@
 				</button>
 			</div>
 		</div>
-		<div *ngFor="let case of cases">
-			{{ case.case_name }}
+		<div *ngFor="let case of cases" [ngClass]="{ 'selected-case': activeCase.id == case.id }">
+			<cases-preview [case]="case"></cases-preview>
 		</div>
 		<div *ngIf="cases.length == 0">
 			<span>No cases saved.</span>

@@ -1,6 +1,8 @@
 <mat-card class="hover-highlight">
-	<mat-card-title class="layout-padding">
-		<span>{{ case.case_name }}</span>
-		<span>Year: {{ case.case_year || 'Unentered' }}</span>
+	<mat-card-title class="layout-padding layout-row">
+		<span fxFlex="80">{{ case.case_name }} ({{ case.case_year || 'Unentered' }})</span>
+		<mat-chip-list fxFlex="20">
+			<mat-chip>{{ case.case_type }}</mat-chip>
+		</mat-chip-list>
 	</mat-card-title>
 </mat-card>

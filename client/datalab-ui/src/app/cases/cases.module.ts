@@ -35,7 +35,7 @@ import { CasesPreviewComponent } from './cases-preview/cases-preview.component';
     CasesService
   ],
   bootstrap: [CasesListComponent],
-  exports: [CasesListComponent],
-  entryComponents: [CreateCaseComponent]
+  exports: [CasesListComponent, CasesPreviewComponent],
+  entryComponents: [CreateCaseComponent, CasesPreviewComponent]
 })
 export class CasesModule { }

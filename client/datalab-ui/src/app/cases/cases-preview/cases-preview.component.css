@@ -1,0 +1,9 @@
+.mat-chip .civil {
+	background-color: #000;
+	color: #fff;
+}
+
+.mat-chip .criminal {
+	background-color: #fff;
+	color: #000;
+}

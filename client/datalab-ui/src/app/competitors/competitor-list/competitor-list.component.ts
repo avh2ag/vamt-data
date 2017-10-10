@@ -13,13 +13,17 @@ import { Competitor } from '../../config/models';
 export class CompetitorListComponent implements OnInit {
 
   constructor(private competitorsService: CompetitorsService, private dialog: MatDialog) { }
-  public competitors: Array<Competitor> = [];
+  public allCompetitors: Array<Competitor> = [];
   public loading: boolean = false;
   public activeCompetitor: Competitor;
   public previewVisible: boolean = true;
-
+  competitorSubscription;
   ngOnInit() {
   	this.loadCompetitors();
+    this.allCompetitors = this.competitorsService.loadedCompetitors;
+    this.competitorSubscription = this.competitorsService.notifyDataChanged.subscribe((competitors: Array<Competitor>) =>{
+      this.allCompetitors = competitors;
+    });
   }
 
   showCreateDialog() {
@@ -40,9 +44,9 @@ export class CompetitorListComponent implements OnInit {
   }
 
   onCompetitorsLoad(competitorList: Array<Competitor>): void {
-      this.competitors = competitorList;
-      if (this.competitors.length > 0) {
-        this.selectCompetitor(this.competitors[0]);
+      this.allCompetitors = competitorList;
+      if (this.allCompetitors.length > 0) {
+        this.selectCompetitor(this.allCompetitors[0]);
       }
       
   }
