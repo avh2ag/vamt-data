@@ -11,6 +11,7 @@ import { Case } from '../config/models';
 export class CasesService {
   public allCases: Array<Case> = [];
   public notifyDataChanged: Subject<Case[]> = new Subject();
+  public activeCase: Case = null;
   private _env: Env = new Env();
   private _baseUrl: string = this._env.getAPIHost() + 'cases/';
   constructor(private http: Http) {}

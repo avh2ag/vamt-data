@@ -3,7 +3,7 @@
 <!-- 			<span *ngIf="!editMode" fxFlex="70">{{ activeCompetitor.first_name }}
 			</span> -->
 			<mat-form-field fxFlex="50">
-				<input matInput #name [value]="activeCompetitor.name" [readonly]="!editMode">
+				<input matInput #name  placeholder="Competitor Name" [value]="activeCompetitor.name" [readonly]="!editMode">
 			</mat-form-field>
 			<span fxFlex="5"></span>
 			<mat-form-field fxFlex="15">

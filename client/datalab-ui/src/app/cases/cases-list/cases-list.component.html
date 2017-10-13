@@ -14,7 +14,7 @@
 				</button>
 			</div>
 		</div>
-		<div *ngFor="let case of cases" [ngClass]="{ 'selected-case': activeCase.id == case.id }">
+		<div *ngFor="let case of cases" [ngClass]="{ 'selected-case': activeCase.id == case.id }" (click)="selectCase(case)">
 			<cases-preview [case]="case"></cases-preview>
 		</div>
 		<div *ngIf="cases.length == 0">
@@ -28,5 +28,6 @@
 	</div>
 	<div class="layout-column" fxFlex="66">
 		<!-- Placeholder for case details -->
+		<case-detail [case]="activeCase"></case-detail>
 	</div>
 </div>

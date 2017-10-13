@@ -13,12 +13,14 @@ import { CasesService } from './cases.service';
 import { CreateCaseComponent } from './create-case/create-case.component';
 import { WitnessesModule } from '../witnesses/witnesses.module';
 import { CasesPreviewComponent } from './cases-preview/cases-preview.component';
+import { CaseDetailComponent } from './case-detail/case-detail.component';
 
 @NgModule({
   declarations: [
     CasesListComponent,
     CreateCaseComponent,
-    CasesPreviewComponent
+    CasesPreviewComponent,
+    CaseDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,7 @@ import { CasesPreviewComponent } from './cases-preview/cases-preview.component';
     CasesService
   ],
   bootstrap: [CasesListComponent],
-  exports: [CasesListComponent, CasesPreviewComponent],
-  entryComponents: [CreateCaseComponent, CasesPreviewComponent]
+  exports: [CasesListComponent, CasesPreviewComponent, CaseDetailComponent],
+  entryComponents: [CreateCaseComponent, CasesPreviewComponent, CaseDetailComponent]
 })
 export class CasesModule { }
