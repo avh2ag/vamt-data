@@ -5,9 +5,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateWitnessComponent } from './create-witness/create-witness.component';
 import { MatSnackBarModule, MatIconModule, MatButtonModule,
 MatFormFieldModule, MatInputModule, MatSelectModule,
-MatTooltipModule, MatAutocompleteModule } from '@angular/material';
+MatTooltipModule, MatAutocompleteModule, MatCardModule, MatProgressBarModule,
+MatChipsModule, MatTableModule, MatPaginatorModule,  MatSortModule } from '@angular/material';
+import { CdkTableModule } from '@angular/cdk/table';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { SelectWitnessComponent } from './select-witness/select-witness.component';
+import { WitnessTableComponent } from './witness-table/witness-table.component';
 
 @NgModule({
   imports: [
@@ -15,14 +18,16 @@ import { SelectWitnessComponent } from './select-witness/select-witness.componen
   	MatSnackBarModule, MatIconModule, MatButtonModule,
   	MatFormFieldModule, MatInputModule, MatSelectModule,
   	FormsModule, ReactiveFormsModule, MatTooltipModule,
+    MatCardModule, MatProgressBarModule, MatChipsModule,
+    MatTableModule, MatPaginatorModule,  MatSortModule,     
     MatAutocompleteModule,
     CommonModule
   ],
   providers: [
     WitnessService
   ],
-  declarations: [CreateWitnessComponent, SelectWitnessComponent],
-  entryComponents: [CreateWitnessComponent],
-  exports: [CreateWitnessComponent, SelectWitnessComponent]
+  declarations: [CreateWitnessComponent, SelectWitnessComponent, WitnessTableComponent],
+  entryComponents: [CreateWitnessComponent, WitnessTableComponent],
+  exports: [CreateWitnessComponent, SelectWitnessComponent, WitnessTableComponent]
 })
 export class WitnessesModule { }
