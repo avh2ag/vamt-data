@@ -20,7 +20,7 @@ import { WitnessTableComponent } from './witness-table/witness-table.component';
   	FormsModule, ReactiveFormsModule, MatTooltipModule,
     MatCardModule, MatProgressBarModule, MatChipsModule,
     MatTableModule, MatPaginatorModule,  MatSortModule,     
-    MatAutocompleteModule,
+    MatAutocompleteModule, CdkTableModule,
     CommonModule
   ],
   providers: [

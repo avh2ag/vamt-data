@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import 'rxjs/Rx';
+import { Observable } from 'rxjs/Rx';
 import { Subject } from 'rxjs/Rx';
 import { each } from 'lodash';
 import * as moment from 'moment';
@@ -38,6 +39,23 @@ export class WitnessService {
     }).catch( err => {
       return err.json();
     });
-  }  
+  }
+
+  public getWitnessById(id) {
+    let endpoint = `${this._baseUrl}${id}`;
+    return this.http.get(endpoint).map(resp => {
+      return resp.json();
+    }).catch(err => {
+      return err.json();
+    });
+  }
+
+  public getWitnessesFromIdList(idList) {
+    let requestList = [];
+    each(idList, id => {
+      requestList.push(this.getWitnessById(id));
+    });
+    return Observable.forkJoin(requestList);
+  }
 
 }

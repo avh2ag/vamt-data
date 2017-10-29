@@ -1,3 +1,30 @@
-<p>
-  witness-table works!
-</p>
+<div class="layout-column">
+	<div class="layout-row">
+	    <mat-paginator fxFlex="60" #paginator
+		        [length]="totalResults"
+		        [pageIndex]="pageIndex"
+		        [pageSize]="pageSize"
+		        [pageSizeOptions]="pageSizeOptions">
+		</mat-paginator>			
+	</div>
+	<mat-table #table [dataSource]="witnessDatasource" matSort>
+
+		    <!--- Note that these columns can be defined in any order.
+		          The actual rendered columns are set as a property on the row definition" -->
+		    <ng-container cdkColumnDef="side">
+		      <mat-header-cell *cdkHeaderCellDef mat-sort-header>Side</mat-header-cell>
+		      <mat-cell *cdkCellDef="let row"> {{ row.side }} </mat-cell>
+		    </ng-container>
+		   	<ng-container cdkColumnDef="witness_name">
+		      <mat-header-cell *cdkHeaderCellDef mat-sort-header>Witness Name</mat-header-cell>
+		      <mat-cell *cdkCellDef="let row"> {{ row.witness_name }} </mat-cell>
+		    </ng-container>
+	 	   	<ng-container cdkColumnDef="witness_type">
+		      <mat-header-cell *cdkHeaderCellDef mat-sort-header>Witness Type</mat-header-cell>
+		      <mat-cell *cdkCellDef="let row"> {{ row.witness_type }} </mat-cell>
+		    </ng-container>
+
+		    <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+		    <mat-row class="hover-highlight" *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
+	</mat-table>
+</div>

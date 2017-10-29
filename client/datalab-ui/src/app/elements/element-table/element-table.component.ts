@@ -23,9 +23,9 @@ export class ElementTableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('filter') filter: ElementRef;
-  elementsDatabase;
+  elementsDatabase: ElementsDatabase | null;
   dataSource: ElementsDataSource | null;
-  displayedColumns = ['competitor_name', 'witness_name'];
+  displayedColumns = [];
   updateDataSubscription;
   totalResults: Number = 0;
   defaultPageIndex = 0;
