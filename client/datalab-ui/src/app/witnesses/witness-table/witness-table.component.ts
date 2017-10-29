@@ -4,6 +4,7 @@ import { MatSort, MatPaginator } from '@angular/material';
 import { concat, each } from 'lodash';
 import { Case, Witness } from '../../config/models';
 import { WitnessService } from '../witness.service';
+import { CasesService } from '../../cases/cases.service';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/startWith';
@@ -19,7 +20,6 @@ import * as moment from 'moment';
   styleUrls: ['./witness-table.component.css']
 })
 export class WitnessTableComponent implements OnInit {
-  @Input() case: Case;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   witnessDatabase: WitnessDatabase | null;
@@ -31,29 +31,38 @@ export class WitnessTableComponent implements OnInit {
   pageSize = 25;
   totalResults = 0;
   pageSizeOptions: Array<Number> = [10, 25, 50, 100];
-  displayedColumns = ['side', 'witness_name', 'witness_type'];
-  constructor(private witnessService: WitnessService) { }
+  displayedColumns = ['side', 'witness_name'];
+  updateDataSubscription;
+  constructor(private witnessService: WitnessService, private casesService: CasesService) { }
 
   ngOnInit() {
     this.loadDb();
-    this.getWitnessesByIds(this.case.p_witnesses, 'P');
-    this.getWitnessesByIds(this.case.d_witnesses, 'D');
-    this.getWitnessesByIds(this.case.swing_witnesses, 'Swing');
+    this.updateDataSubscription = this.casesService.notifyActiveCaseChanged.subscribe((data: Case) => {
+      this.loadWitnesses(data);
+    }); 
+    this.loadWitnesses(this.casesService.activeCase);
   }
 
+
   getWitnessesByIds(idList, side) {
- 	this.witnessService.getWitnessesFromIdList(idList).subscribe(witnessList => {
-    console.log(witnessList);
- 		each(witnessList, witness => {
-       witness["side"] = side;
-       this.allWitnesses.push(witness);
-     });
-     this.loadDb();
- 		//callback etnereting data into datasource with designated side
- 	}, err => {
- 		console.log(err);
-     return [];
- 	});
+   	this.witnessService.getWitnessesFromIdList(idList).subscribe(witnessList => {
+   		each(witnessList, witness => {
+         witness["side"] = side;
+         this.allWitnesses.push(witness);
+       });
+       this.loadDb();
+   		//callback etnereting data into datasource with designated side
+   	}, err => {
+   		console.log(err);
+       return [];
+   	});
+  }
+
+  loadWitnesses(caseToLoad) { 
+    this.allWitnesses = [];
+    this.getWitnessesByIds(caseToLoad.p_witnesses, 'P');
+    this.getWitnessesByIds(caseToLoad.d_witnesses, 'D');
+    this.getWitnessesByIds(caseToLoad.swing_witnesses, 'Swing');
   }
 
   loadDb() {

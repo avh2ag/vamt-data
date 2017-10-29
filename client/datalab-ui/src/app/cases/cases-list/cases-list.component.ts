@@ -39,12 +39,14 @@ export class CasesListComponent implements OnInit {
   onCasesResponse(resp: Array<Case>) {
   	this.cases = resp;
   	if (this.cases.length > 0) {
-  		this.activeCase = this.cases[0];
+  		this.selectCase(this.cases[0]);
   	}
   }
 
   selectCase(newCase: Case) {
-  	this.activeCase = newCase;
+    this.activeCase = newCase;
+  	this.casesService.activeCase = newCase;
+    this.casesService.notifyActiveCaseChanged.next(newCase);
   }
 
   onLoadErr(err) {
