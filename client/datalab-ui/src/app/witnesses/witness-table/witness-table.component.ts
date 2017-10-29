@@ -59,7 +59,7 @@ export class WitnessTableComponent implements OnInit {
   loadDb() {
     this.resetPagination();
     this.witnessDatabase = new WitnessDatabase(this.allWitnesses);
-    this.witnessDatasource = new WitnessDataSource(this.witnessDatabase, this.sort, this.paginator);    
+    this.witnessDatasource = new WitnessDataSource(this.witnessDatabase, this.sort);    
   }
 
   resetPagination() {
@@ -103,7 +103,7 @@ export class WitnessDataSource extends DataSource<any> {
   set filter(filter: string) { this._filterChange.next(filter); }
   public total: Number = 0;
   constructor(private _witnessDatabase: WitnessDatabase, private _sort: MatSort,
-    private _paginator: MatPaginator) {
+   ) {
     super();
   }
 
@@ -112,7 +112,6 @@ export class WitnessDataSource extends DataSource<any> {
     const displayDataChanges = [
       this._witnessDatabase.dataChange,
       this._sort.sortChange,
-      this._paginator.page,
       this._filterChange,
     ];
 
@@ -122,9 +121,8 @@ export class WitnessDataSource extends DataSource<any> {
         return searchStr.indexOf(this.filter.toLowerCase()) != -1;
       });
       this.total = data.length;
-      const startIndex = this._paginator.pageIndex * this._paginator.pageSize;
       
-      return data.splice(startIndex, this._paginator.pageSize);
+      return data;
     });
   }
 

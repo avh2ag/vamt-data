@@ -1,11 +1,6 @@
 <div class="layout-column">
 	<div class="layout-row">
-	    <mat-paginator fxFlex="60" #paginator
-		        [length]="totalResults"
-		        [pageIndex]="pageIndex"
-		        [pageSize]="pageSize"
-		        [pageSizeOptions]="pageSizeOptions">
-		</mat-paginator>			
+		
 	</div>
 	<mat-table #table [dataSource]="witnessDatasource" matSort>
 
