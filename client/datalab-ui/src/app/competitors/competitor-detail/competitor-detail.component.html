@@ -17,7 +17,7 @@
 			<button *ngIf="editMode" mat-icon-button (click)="cancelEdit()">
 				<mat-icon>cancel</mat-icon>
 			</button>
-			<button mat-icon-button (click)="deleteActiveCompetitor();" [matTooltip]="'Delete ' + activeCompetitor.name">
+			<button *ngIf="!editMode" mat-icon-button (click)="deleteActiveCompetitor();" [matTooltip]="'Delete ' + activeCompetitor.name">
 				<mat-icon>delete</mat-icon>
 			</button>
 			<button *ngIf="editMode" mat-icon-button (click)="save()">

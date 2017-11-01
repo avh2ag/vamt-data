@@ -23,6 +23,7 @@ export class CompetitorListComponent implements OnInit {
     this.allCompetitors = this.competitorsService.loadedCompetitors;
     this.competitorSubscription = this.competitorsService.notifyDataChanged.subscribe((competitors: Array<Competitor>) =>{
       this.allCompetitors = competitors;
+      this.selectCompetitor(this.allCompetitors[0]);
     });
   }
 

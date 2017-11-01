@@ -11,6 +11,7 @@ export class DeleteDialogComponent implements OnInit {
   	private dialogRef: MatDialogRef<DeleteDialogComponent>) { }
 
   ngOnInit() {
+  	console.log(this.data);
   }
 
   confirm() {

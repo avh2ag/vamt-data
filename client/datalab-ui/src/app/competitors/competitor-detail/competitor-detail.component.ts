@@ -29,9 +29,19 @@ export class CompetitorDetailComponent implements OnInit {
   }
 
   deleteActiveCompetitor() {
-    let dialogRef = this.dialog.open(DeleteDialogComponent);
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
+    let dialogRef = this.dialog.open(DeleteDialogComponent, {
+      data: {
+        label: this.activeCompetitor.name
+      }
+    });
+    dialogRef.afterClosed().subscribe(decision => {
+      if (decision) {
+        this.competitorsService.deleteCompetitor(this.activeCompetitor.id).subscribe(resp => {
+          //snackbar for successful deletion
+        }, err => {
+          //snackbar for error during delete
+        });
+      }
     });  
   }
 
