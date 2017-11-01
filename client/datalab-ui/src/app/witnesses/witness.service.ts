@@ -41,7 +41,7 @@ export class WitnessService {
     });
   }
 
-  public getWitnessById(id) {
+  public getWitnessById(id: Number) {
     let endpoint = `${this._baseUrl}${id}`;
     return this.http.get(endpoint).map(resp => {
       return resp.json();
@@ -50,12 +50,18 @@ export class WitnessService {
     });
   }
 
-  public getWitnessesFromIdList(idList) {
+  public getWitnessesFromIdList(idList: Array<Number>) {
     let requestList = [];
     each(idList, id => {
       requestList.push(this.getWitnessById(id));
     });
     return Observable.forkJoin(requestList);
+  }
+
+  public deleteWitness(witnessId: Number) {
+    let endpoint = this._baseUrl + witnessId;
+    return this.http.delete(endpoint).map(resp => { return resp.json(); })
+    .catch(err => { return err.json(); });
   }
 
 }

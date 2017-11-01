@@ -40,5 +40,14 @@ export class CasesService {
     });
   }
 
+  public deleteCase(caseId: Number) {
+    let endpoint = this._baseUrl + caseId;
+    return this.http.delete(endpoint).map(resp => {
+      return resp.json();
+    }).catch( err => {
+      return err.json();
+    });
+  }
+
 
 }

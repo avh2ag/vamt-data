@@ -12,6 +12,7 @@ import { CasesListComponent } from './cases-list/cases-list.component';
 import { CasesService } from './cases.service';
 import { CreateCaseComponent } from './create-case/create-case.component';
 import { WitnessesModule } from '../witnesses/witnesses.module';
+import { UtilsModule } from '../utils/utils.module';
 import { CasesPreviewComponent } from './cases-preview/cases-preview.component';
 import { CaseDetailComponent } from './case-detail/case-detail.component';
 
@@ -31,7 +32,7 @@ import { CaseDetailComponent } from './case-detail/case-detail.component';
     MatIconModule, MatChipsModule, MatCheckboxModule,
     MatInputModule, MatButtonModule, MatTabsModule,
     MatTooltipModule, MatDialogModule, MatSelectModule,
-    MatListModule
+    MatListModule, UtilsModule
   ],
   providers: [
     CasesService

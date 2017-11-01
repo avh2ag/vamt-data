@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import 'rxjs/Rx';
 import { Subject } from 'rxjs/Rx';
-import { each } from 'lodash';
+import { each, remove } from 'lodash';
 import * as moment from 'moment';
 import { Env } from '../config/env';
 import { Competitor } from '../config/models';
@@ -40,6 +40,17 @@ export class CompetitorsService {
 
   public createCompetitor(competitorData) {
     
+  }
+
+  public deleteCompetitor(competitorId: Number) {
+    let endpoint = this._baseUrl + competitorId;
+    remove(this.loadedCompetitors, competitor => {
+      return competitor.id === competitorId;
+    });
+    return this.http.delete(endpoint).map(resp => {
+      this.notifyDataChanged.next(this.loadedCompetitors);
+      return resp.json(); 
+    }).catch(err => { return err.json(); });
   }
 
 }
