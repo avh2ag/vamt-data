@@ -15,6 +15,7 @@ export class CaseDetailComponent implements OnInit {
   constructor(private casesService: CasesService, private dialog: MatDialog, private snackbar: MatSnackBar) { }
 
   ngOnInit() {
+
   }
 
   deleteActiveCase() {
@@ -49,6 +50,7 @@ export class CaseDetailComponent implements OnInit {
   }  
 
   save() {
-
+    this.editMode = false;
+    
   }
 }

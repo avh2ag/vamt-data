@@ -36,8 +36,10 @@ export class CasesService {
       d_witnesses: caseData["d_wit"],
       swing_witnesses: caseData["s_wit"]
     }).map(resp => {
-      console.log(resp);
-      return resp.json();
+      let createdCase = resp.json();
+      this.allCases.push(createdCase);
+      this.notifyDataChanged.next(this.allCases);
+      return createdCase;
     }).catch( err => {
       return err.json();
     });
