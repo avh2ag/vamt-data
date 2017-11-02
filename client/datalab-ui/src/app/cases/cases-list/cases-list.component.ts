@@ -13,11 +13,15 @@ export class CasesListComponent implements OnInit {
   public previewVisible: boolean = true;
   public cases: Array<Case> = [];
   public activeCase: Case = null;
-
+  dataChangedSubscription;
   constructor(private casesService: CasesService, private dialog: MatDialog) { }
 
   ngOnInit() {
   	this.loadCases();
+    this.dataChangedSubscription = this.casesService.notifyDataChanged.subscribe(casesList => { 
+      this.cases = casesList;
+      this.selectCase(casesList[0]);
+    });
   }
 
   showCreateDialog() {

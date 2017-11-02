@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import 'rxjs/Rx';
 import { Subject } from 'rxjs/Rx';
-import { each } from 'lodash';
+import { each, remove } from 'lodash';
 import * as moment from 'moment';
 import { Env } from '../config/env';
 import { Case } from '../config/models';
@@ -19,6 +19,8 @@ export class CasesService {
 
   public getAllCases() {
     return this.http.get(this._baseUrl).map(resp => {
+      this.allCases = resp.json();
+      this.notifyDataChanged.next(this.allCases);
       return resp.json();
     }).catch( err => {
       return err.json();
@@ -34,6 +36,7 @@ export class CasesService {
       d_witnesses: caseData["d_wit"],
       swing_witnesses: caseData["s_wit"]
     }).map(resp => {
+      console.log(resp);
       return resp.json();
     }).catch( err => {
       return err.json();
@@ -42,7 +45,11 @@ export class CasesService {
 
   public deleteCase(caseId: Number) {
     let endpoint = this._baseUrl + caseId;
+    remove(this.allCases, potentialCase => {
+      return potentialCase.id === caseId;
+    });    
     return this.http.delete(endpoint).map(resp => {
+      this.notifyDataChanged.next(this.allCases);
       return resp.json();
     }).catch( err => {
       return err.json();
