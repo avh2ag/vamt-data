@@ -1,22 +1,26 @@
 <mat-card>
 	<mat-card-title class="layout-padding" style="margin-bottom:0;">
 		<mat-form-field fxFlex="50">
-			<input matInput placeholder="Case Name" #name [value]="case.case_name" [readonly]="!editMode">
+			<input matInput placeholder="Case Name" #name [value]="activeCase.case_name" [readonly]="!editMode">
 		</mat-form-field>
 		<span fxFlex="5"></span>
 		<mat-form-field fxFlex="15">
-	    	<input matInput #year placeholder="Case Year" [value]="case.case_year" [readonly]="!editMode">
+	    	<input matInput #year placeholder="Case Year" [value]="activeCase.case_year" [readonly]="!editMode">
 	  	</mat-form-field>		
 		<span fxFlex></span>
-		<button *ngIf="!editMode" mat-icon-button (click)="enableEditMode()" [matTooltip]="'Edit ' + case.case_name">
+		<button *ngIf="!editMode" mat-icon-button (click)="enableEditMode()" [matTooltip]="'Edit ' + activeCase.case_name">
 			<mat-icon >edit</mat-icon>
 		</button>
 		<button *ngIf="editMode" mat-icon-button (click)="cancelEdit()">
 			<mat-icon>cancel</mat-icon>
 		</button>
+		<button *ngIf="!editMode" mat-icon-button (click)="deleteActiveCase();" [matTooltip]="'Delete ' + activeCase.case_name">
+			<mat-icon>delete</mat-icon>
+		</button>		
 		<button *ngIf="editMode" mat-icon-button (click)="save()">
 			<mat-icon style="line-height:18px">save</mat-icon>
-		</button>		
+		</button>
+
 	</mat-card-title>
 	<mat-card-content>
 		<witness-table></witness-table>
