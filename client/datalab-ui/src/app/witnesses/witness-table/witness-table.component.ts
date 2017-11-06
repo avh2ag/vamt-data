@@ -38,6 +38,7 @@ export class WitnessTableComponent implements OnInit {
   ngOnInit() {
     this.loadDb();
     this.updateDataSubscription = this.casesService.notifyActiveCaseChanged.subscribe((data: Case) => {
+      console.log("Notified case change", data);
       this.loadWitnesses(data);
     }); 
     this.loadWitnesses(this.casesService.activeCase);
@@ -51,7 +52,6 @@ export class WitnessTableComponent implements OnInit {
          this.allWitnesses.push(witness);
        });
        this.loadDb();
-   		//callback etnereting data into datasource with designated side
    	}, err => {
    		console.log(err);
        return [];
@@ -60,6 +60,8 @@ export class WitnessTableComponent implements OnInit {
 
   loadWitnesses(caseToLoad) { 
     this.allWitnesses = [];
+    this.witnessDatabase = null;
+    this.witnessDatasource = null;
     this.getWitnessesByIds(caseToLoad.p_witnesses, 'P');
     this.getWitnessesByIds(caseToLoad.d_witnesses, 'D');
     this.getWitnessesByIds(caseToLoad.swing_witnesses, 'Swing');

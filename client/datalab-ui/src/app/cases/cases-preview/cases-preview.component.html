@@ -1,4 +1,4 @@
-<mat-card class="hover-highlight">
+<mat-card class="hover-highlight" (click)="selectCase()">
 	<mat-card-title class="layout-padding layout-row">
 		<span fxFlex="80">{{ case.case_name }} ({{ case.case_year || 'Unentered' }})</span>
 		<mat-chip-list fxFlex="20">

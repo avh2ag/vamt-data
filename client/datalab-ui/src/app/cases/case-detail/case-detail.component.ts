@@ -10,12 +10,18 @@ import { MatDialog, MAT_DIALOG_DATA, MatDialogRef,
   styleUrls: ['./case-detail.component.css']
 })
 export class CaseDetailComponent implements OnInit {
-  @Input() activeCase: Case;
+  //@Input() activeCase: Case;
+  activeCase: Case = null;
   editMode: boolean = false;
+  activeCaseSubscription;
   constructor(private casesService: CasesService, private dialog: MatDialog, private snackbar: MatSnackBar) { }
 
   ngOnInit() {
-
+    this.activeCase = this.casesService.activeCase;
+    this.activeCaseSubscription = this.casesService.notifyActiveCaseChanged.subscribe(activeCase => {
+      this.casesService.activeCase = activeCase;
+      this.activeCase = activeCase;
+    });
   }
 
   deleteActiveCase() {
@@ -51,6 +57,6 @@ export class CaseDetailComponent implements OnInit {
 
   save() {
     this.editMode = false;
-    
+
   }
 }

@@ -11,7 +11,7 @@ import { CreateCaseComponent } from '../create-case/create-case.component';
 export class CasesListComponent implements OnInit {
   public loading: boolean = false;
   public previewVisible: boolean = true;
-  public cases: Array<Case> = [];
+  public allCases: Array<Case> = [];
   public activeCase: Case = null;
   dataChangedSubscription;
   constructor(private casesService: CasesService, private dialog: MatDialog) { }
@@ -19,8 +19,8 @@ export class CasesListComponent implements OnInit {
   ngOnInit() {
   	this.loadCases();
     this.dataChangedSubscription = this.casesService.notifyDataChanged.subscribe(casesList => { 
-      this.cases = casesList;
-      this.selectCase(casesList[0]);
+      this.allCases = casesList;
+      this.casesService.selectCase(casesList[0]);
     });
   }
 
@@ -41,16 +41,10 @@ export class CasesListComponent implements OnInit {
   }
 
   onCasesResponse(resp: Array<Case>) {
-  	this.cases = resp;
-  	if (this.cases.length > 0) {
-  		this.selectCase(this.cases[0]);
+  	this.allCases = resp;
+  	if (this.allCases.length > 0) {
+  		this.casesService.selectCase(this.allCases[0]);
   	}
-  }
-
-  selectCase(newCase: Case) {
-    this.activeCase = newCase;
-  	this.casesService.activeCase = newCase;
-    this.casesService.notifyActiveCaseChanged.next(newCase);
   }
 
   onLoadErr(err) {

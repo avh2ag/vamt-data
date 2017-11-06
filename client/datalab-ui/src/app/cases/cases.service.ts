@@ -58,5 +58,10 @@ export class CasesService {
     });
   }
 
+  public selectCase(newCase) {
+    this.activeCase = newCase;
+    this.notifyActiveCaseChanged.next(this.activeCase);
+  }
+
 
 }
