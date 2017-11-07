@@ -14,7 +14,7 @@
 				</button>
 			</div>
 		</div>
-		<div *ngFor="let caseData of allCases" >
+		<div *ngFor="let caseData of allCases | casesFilter:keyword.value" >
 			<cases-preview [case]="caseData"></cases-preview>
 		</div>
 		<div *ngIf="allCases.length == 0">

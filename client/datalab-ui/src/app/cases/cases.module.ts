@@ -15,13 +15,15 @@ import { WitnessesModule } from '../witnesses/witnesses.module';
 import { UtilsModule } from '../utils/utils.module';
 import { CasesPreviewComponent } from './cases-preview/cases-preview.component';
 import { CaseDetailComponent } from './case-detail/case-detail.component';
+import { CasesPipe } from './cases-list/cases-filter.pipe';
 
 @NgModule({
   declarations: [
     CasesListComponent,
     CreateCaseComponent,
     CasesPreviewComponent,
-    CaseDetailComponent
+    CaseDetailComponent, 
+    CasesPipe
   ],
   imports: [
     BrowserModule,
