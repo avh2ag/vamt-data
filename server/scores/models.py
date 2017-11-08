@@ -60,15 +60,12 @@ class Ballot(models.Model):
 	p_close = models.ForeignKey(to=Score, related_name="p_close")
 	d_close = models.ForeignKey(to=Score, related_name="d_close")
 
-class Team(models.Model):
-	team_name = models.TextField(blank=False, null=False)
-	team_ballots = models.ManyToManyField(Ballot)
-	#team_attorneys = models.ManyToManyField(Att)
-
-class Tournament(models.Model):
-	tournament_date = models.DateField(null=False)
-	tournament_name = models.TextField(blank=False)
-	teams = models.ManyToManyField(Team)
+class Round(models.Model):
+	opponent = models.TextField(blank=False)
+	side = models.TextField(blank=False) # P || D
+	ballots = models.ManyToManyField(Ballot)
+	round_number = models.IntegerField(blank=False)
+	# Our elements
 
 class Element(models.Model):
 	competitor_name = models.TextField(null=False, blank=False)
@@ -78,9 +75,9 @@ class Element(models.Model):
 	role_type = models.TextField(blank=False) #Atty | Witness
 	score = models.ForeignKey(to=Score)
 	element_date = models.DateField(null=False)
-	tournament = models.ForeignKey(to=Tournament)
 	round = models.IntegerField()
 	opponent = models.TextField(null=True, blank=True)
+
 
 class Competitor(models.Model):
 	name = models.TextField(blank=False, null=False)
@@ -88,3 +85,14 @@ class Competitor(models.Model):
 	grad_year = models.IntegerField(null=True, blank=True)
 	picture_url = models.TextField(blank=True)
 	active = models.BooleanField(default=False)
+
+class Team(models.Model):
+	team_name = models.TextField(blank=False, null=False)
+	team_rounds = models.ManyToManyField(Round)
+	team_attorneys = models.ManyToManyField(Competitor, related_name="team_attorneys")
+	team_witnesses = models.ManyToManyField(Competitor, related_name="team_witnesses")
+
+class Tournament(models.Model):
+	tournament_date = models.DateField(null=False)
+	tournament_name = models.TextField(blank=False)
+	teams = models.ManyToManyField(Team)
