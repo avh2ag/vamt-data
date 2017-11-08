@@ -1,3 +1,33 @@
-<p>
-  tournament-list works!
-</p>
+<mat-progress-bar mode="indeterminate" *ngIf="loading" ></mat-progress-bar>
+<div class="layout-row" *ngIf="!loading">
+	<div class="layout-column" fxFlex="33" *ngIf="previewVisible">
+		<div class="layout-row layout-padding">
+			<mat-form-field fxFlex="80">
+				<input matInput #keyword placeholder="Case name" >
+			</mat-form-field>
+			<button mat-icon-button matTooltip="Add Case" (click)="showCreateDialog()">
+				<mat-icon>add</mat-icon>
+			</button>
+			<div fxFlex="10" style="z-index: 10; padding-left: 5%;">
+				<button mat-icon-button mat-raised-button color="accent" (click)="hidePreview()">
+					<mat-icon>chevron_left</mat-icon>
+				</button>
+			</div>
+		</div>
+		<div *ngFor="let caseData of allCases" >
+			<tournament-preview></tournament-preview>
+		</div>
+		<div *ngIf="allTournaments.length == 0">
+			<span>No tournaments saved.</span>
+		</div>
+	</div>
+	<div fxFlex="5" *ngIf="!previewVisible">
+		<button mat-icon-button mat-raised-button color="accent" (click)="showPreview()">
+			<mat-icon>chevron_right</mat-icon>
+		</button>
+	</div>
+	<div class="layout-column" fxFlex="66">
+		<!-- Placeholder for case details -->
+		<tournament-detail></tournament-detail>
+	</div>
+</div>

@@ -15,6 +15,7 @@ export class Tournament{
 	public id: Number;
 	public tournament_date; // figure out the format later
 	public tournament_name: string;
+	public teams: Array<Team>;
 }
 
 export class Witness {
@@ -37,7 +38,6 @@ export class Case {
 
 export class Element {
 	constructor() {};
-	public tournament: Tournament;
 	public score: Score;
 	public id: Number;
 	public side: string;
@@ -59,4 +59,12 @@ export class Competitor {
 	public picture_url: string;
 	public active: boolean;
 	public elements: Array<Element>; 
+}
+
+export class Team {
+
+}
+
+export class Round {
+
 }
