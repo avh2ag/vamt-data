@@ -6,11 +6,15 @@ import { MatSidenavModule, MatToolbarModule, MatButtonModule } from '@angular/ma
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CompetitorModule, CompetitorListComponent } from './competitors/index';
 import { CasesModule, CasesListComponent } from './cases/index';
+import { BallotsModule, BallotListComponent } from './ballots/index';
+import { TournamentsModule, TournamentListComponent } from './tournaments/index';
 import { MATERIAL_COMPATIBILITY_MODE } from '@angular/material';
 
 const appRoutes: Routes = [
   { path: 'competitors', component: CompetitorListComponent },
   { path: 'cases', component: CasesListComponent },
+  { path: 'ballots', component: BallotListComponent },
+  { path: 'tournaments', component: TournamentListComponent },
   { path: '**', redirectTo: '/competitors', pathMatch: 'full' }
 ];
 
@@ -24,7 +28,9 @@ const appRoutes: Routes = [
     MatSidenavModule, MatToolbarModule, MatButtonModule,
     RouterModule.forRoot(appRoutes),
     CompetitorModule,
-    CasesModule
+    CasesModule,
+    BallotsModule,
+    TournamentsModule
   ],
   providers: [  {provide: MATERIAL_COMPATIBILITY_MODE, useValue: true} ],
   bootstrap: [AppComponent]
