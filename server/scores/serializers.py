@@ -33,7 +33,6 @@ class TournamentSerializer(serializers.ModelSerializer):
 			)
 
 class ElementSerializer(serializers.ModelSerializer):
-	tournament = TournamentSerializer()
 	score = ScoreSerializer()
 	witness = WitnessSerializer()
 	class Meta:
@@ -41,8 +40,7 @@ class ElementSerializer(serializers.ModelSerializer):
 		fields = (
 			'id', 'side', 'category',
 			'role_type', 'score', 'element_date',
-			'tournament', 'round', 'opponent',
-			'witness', 'competitor_name',
+			'round', 'opponent', 'witness', 'competitor_name',
 			) 
 		# next app: "cases" that link back
 
