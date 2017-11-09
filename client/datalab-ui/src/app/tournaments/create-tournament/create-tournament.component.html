@@ -1,3 +1,46 @@
-<p>
-  create-tournament works!
-</p>
+<h3 mat-dialog-title>Create Tournament</h3>
+<mat-dialog-content >
+	<mat-expansion-panel>
+  		<mat-expansion-panel-header>
+		    <mat-panel-title>
+		      Tournament Info
+		    </mat-panel-title>
+	  	</mat-expansion-panel-header>
+	  	<div class="layout-row layout-padding" fxLayoutGap="20px">
+		  	<mat-form-field>
+		    	<input matInput placeholder="Tournament Name">
+		  	</mat-form-field>
+		  	<mat-form-field>
+		    	<input matInput [matDatepicker]="picker" placeholder="Tournament Date" >
+		    	<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+	  			<mat-datepicker #picker></mat-datepicker>
+		  	</mat-form-field>
+	  		<mat-checkbox #checkBox [checked]="singleTeamTourney" >Single Team Tournament</mat-checkbox>
+	  	</div>
+	</mat-expansion-panel>
+	<mat-expansion-panel>
+  		<mat-expansion-panel-header>
+		    <mat-panel-title>
+		      Select Teams
+		    </mat-panel-title>
+	  </mat-expansion-panel-header>
+
+	</mat-expansion-panel>
+	<mat-expansion-panel>
+  		<mat-expansion-panel-header>
+		    <mat-panel-title>
+		      Ballots - {{ team1.team_name|| 'Team 1' }}
+		    </mat-panel-title>
+	  	</mat-expansion-panel-header>
+	</mat-expansion-panel>
+	<mat-expansion-panel *ngIf="!singleTeamTourney">
+  		<mat-expansion-panel-header>
+		    <mat-panel-title>
+		      Ballots - {{ team2.team_name|| 'Team 2' }}
+		    </mat-panel-title>
+	  	</mat-expansion-panel-header>
+	</mat-expansion-panel>			
+</mat-dialog-content>
+<mat-dialog-actions>
+	<button mat-raised-button (click)="cancel()">Cancel</button>
+</mat-dialog-actions>

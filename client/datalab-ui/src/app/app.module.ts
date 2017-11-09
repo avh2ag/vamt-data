@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { MatSidenavModule, MatToolbarModule, MatButtonModule } from '@angular/material';
+import { MatSidenavModule, MatToolbarModule, MatButtonModule, MatNativeDateModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CompetitorModule, CompetitorListComponent } from './competitors/index';
 import { CasesModule, CasesListComponent } from './cases/index';
@@ -26,6 +26,7 @@ const appRoutes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     MatSidenavModule, MatToolbarModule, MatButtonModule,
+    MatNativeDateModule,
     RouterModule.forRoot(appRoutes),
     CompetitorModule,
     CasesModule,
