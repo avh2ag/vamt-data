@@ -61,10 +61,57 @@ export class Competitor {
 	public elements: Array<Element>; 
 }
 
-export class Team {
+export class Ballot {
+	constructor() {};
+	p_open: Score;
+	d_open: Score;
 
+	p_adx_1: Score;
+	p_wdx_1: Score;
+	p_w_cx_1: Score;
+	d_acx_1: Score;
+
+	p_adx_2: Score;
+	p_wdx_2: Score;
+	p_wcx_2: Score;
+	d_acx_2: Score;
+
+	p_adx_3: Score;
+	p_wdx_3: Score;
+	p_wcx_3: Score;
+	d_acx_3: Score;
+
+	d_adx_1: Score;
+	d_wdx_1: Score;
+	d_wcx_1: Score;
+	p_acx_1: Score;
+
+	d_adx_2: Score;
+	d_wdx_2: Score;
+	d_wcx_2: Score;
+	p_acx_2: Score;
+
+	d_adx_3: Score;
+	d_wdx_3: Score;
+	d_wcx_3: Score;
+	p_acx_3: Score;
+
+	p_close: Score;
+	d_close: Score;	
+}
+
+export class Team {
+	constructor() {};
+	public team_name: string;
+	public team_rounds: Array<Round>;
+	public team_attorneys: Array<Competitor>;
+	public team_witnesses: Array<Competitor>;	
 }
 
 export class Round {
-
+	constructor() {};
+	public opponent: string;
+	public side: string;
+	public ballots: Array<Ballot>;
+	public round_number: Number;	
 }
