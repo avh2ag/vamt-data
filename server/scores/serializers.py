@@ -24,13 +24,47 @@ class ScoreSerializer(serializers.ModelSerializer):
 		fields = (
 			'id', 'raw_score', 'average_z'
 			)
-
-class TournamentSerializer(serializers.ModelSerializer):
+class BallotSerializer(serializers.ModelSerializer):
 	class Meta:
-		model = Tournament
-		fields = (
-			'id', 'tournament_date', 'tournament_name'
-			)
+		model = Ballot
+		p_open = ScoreSerializer
+		d_open = ScoreSerializer
+		p_adx_1 = ScoreSerializer
+		p_wdx_1 = ScoreSerializer
+		p_w_cx_1 = ScoreSerializer
+		d_acx_1 = ScoreSerializer
+		p_adx_2 = ScoreSerializer
+		p_wdx_2 = ScoreSerializer
+		p_wcx_2 = ScoreSerializer
+		d_acx_2 = ScoreSerializer
+		p_adx_3 = ScoreSerializer
+		p_wdx_3 = ScoreSerializer
+		p_wcx_3 = ScoreSerializer
+		d_acx_3 = ScoreSerializer
+		d_adx_1 = ScoreSerializer
+		d_wdx_1 = ScoreSerializer
+		d_wcx_1 = ScoreSerializer
+		p_acx_1 = ScoreSerializer
+		d_adx_2 = ScoreSerializer
+		d_wdx_2 = ScoreSerializer
+		d_wcx_2 = ScoreSerializer
+		p_acx_2 = ScoreSerializer
+		d_adx_3 = ScoreSerializer
+		d_wdx_3 = ScoreSerializer
+		d_wcx_3 = ScoreSerializer
+		p_acx_3 = ScoreSerializer
+		p_close = ScoreSerializer
+		d_close = ScoreSerializer
+		fields = ('id',
+			'p_open', 'd_open', 
+			'p_adx_1', 'p_wdx_1', 'p_w_cx_1', 'd_acx_1',
+			'p_adx_2', 'p_wdx_2', 'p_w_cx_2', 'd_acx_2',
+			'p_adx_3', 'p_wdx_3', 'p_wcx_3', 'd_acx_3',
+			'd_adx_1', 'd_wdx_1', 'd_w_cx_1', 'p_acx_1',
+			'd_adx_2', 'd_wdx_2', 'd_w_cx_2', 'p_acx_2',
+			'd_adx_3', 'd_wdx_3', 'd_wcx_3', 'p_acx_3',
+			'p_close', 'd_close',
+		)
 
 class ElementSerializer(serializers.ModelSerializer):
 	score = ScoreSerializer()
@@ -52,3 +86,27 @@ class CompetitorSerializer(serializers.ModelSerializer):
 			'id', 'name', 'grad_year',
 			'elements', 'picture_url', 'active',
 		)
+class RoundSeriaizer(serializers.ModelSerializer):
+	class Meta:
+		model = Round
+		ballots = BallotSerializer
+		field = ('id', 'opponent','side', 'round_number', 'ballots')
+
+class TeamSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Team
+		team_rounds = RoundSeriaizer
+		team_attorneys = CompetitorSerializer
+		team_witnesses = CompetitorSerializer
+		fields = (
+			'id', 'team_rounds', 'team_attorneys', 'team_witnesses'
+		)
+
+class TournamentSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Tournament,
+		teams = TeamSerializer
+		fields = (
+			'id', 'tournament_date', 'tournament_name', 'teams'
+			)
+

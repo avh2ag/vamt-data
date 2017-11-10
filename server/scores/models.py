@@ -18,6 +18,7 @@ class Case(models.Model):
 
 
 class Score(models.Model):
+	# @TODO --> Given new Data Models, update 'average_z' to just the ballot specific z
 	raw_score = models.IntegerField(null=False)
 	average_z = models.FloatField(null=False)
 
