@@ -15,7 +15,7 @@
 		    	<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
 	  			<mat-datepicker #picker></mat-datepicker>
 		  	</mat-form-field>
-	  		<mat-checkbox #checkBox [checked]="singleTeamTourney" >Single Team Tournament</mat-checkbox>
+	  		<mat-checkbox #singleTeamTourney >Single Team Tournament</mat-checkbox>
 	  	</div>
 	</mat-expansion-panel>
 	<mat-expansion-panel>
@@ -33,7 +33,7 @@
 		    </mat-panel-title>
 	  	</mat-expansion-panel-header>
 	</mat-expansion-panel>
-	<mat-expansion-panel *ngIf="!singleTeamTourney">
+	<mat-expansion-panel *ngIf="!singleTeamTourney.checked">
   		<mat-expansion-panel-header>
 		    <mat-panel-title>
 		      Ballots - {{ team2.team_name|| 'Team 2' }}
