@@ -6,6 +6,7 @@ import { MatCardModule, MatProgressBarModule, MatFormFieldModule,
  MatTooltipModule, MatDialogModule, MatSelectModule,
  MatListModule, MatExpansionModule, MatDatepickerModule} from '@angular/material';
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TournamentListComponent } from './tournament-list/tournament-list.component';
 import { TournamentPreviewComponent } from './tournament-preview/tournament-preview.component';
 import { TournamentDetailComponent } from './tournament-detail/tournament-detail.component';
@@ -18,7 +19,7 @@ import { CasesModule } from '../cases/cases.module';
  	MatInputModule, MatButtonModule, MatTabsModule,
  	MatTooltipModule, MatDialogModule, MatSelectModule,
  	MatListModule, MatExpansionModule, MatDatepickerModule,
- 	FlexLayoutModule, 
+ 	FlexLayoutModule, FormsModule, ReactiveFormsModule,
  	CasesModule
   ],
   declarations: [TournamentListComponent, TournamentPreviewComponent,

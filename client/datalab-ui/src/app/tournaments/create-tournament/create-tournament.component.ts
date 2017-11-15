@@ -1,4 +1,5 @@
 import { Component, OnInit, Inject, ViewChild } from '@angular/core';
+import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CasesService } from '../../cases/cases.service';
 import { MAT_DIALOG_DATA, MatDialogRef, 
   MatDialog, MatCheckbox } from '@angular/material';
@@ -11,11 +12,21 @@ export class CreateTournamentComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialogRef<CreateTournamentComponent>,
   	private casesService: CasesService) { }
-  @ViewChild(MatCheckbox) checkbox: MatCheckbox
+  @ViewChild(MatCheckbox) checkbox: MatCheckbox;
+  public tourneyInfoForm: FormGroup;
   public singleTeamTourney: boolean = false;
+  public tourneyInfoOpen: boolean = true;
   public team1 = {};
-  public team2 = {};
+  public team2 = {}; //switch to team after input
   ngOnInit() {
+    this.resetTourneyInfoForm();
+  }
+
+  resetTourneyInfoForm() {
+    this.tourneyInfoForm = new FormGroup({
+      'tournamentName': new FormControl(null, [Validators.required]),
+      'tournamentDate': new FormControl(null, [Validators.required]),
+    });
   }
 
   getAllCases() {

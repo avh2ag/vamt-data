@@ -1,40 +1,41 @@
 <h3 mat-dialog-title>Create Tournament</h3>
 <mat-dialog-content >
-	<mat-expansion-panel>
+	<mat-expansion-panel [expanded]="tourneyInfoOpen">
   		<mat-expansion-panel-header>
 		    <mat-panel-title>
 		      Tournament Info
 		    </mat-panel-title>
 	  	</mat-expansion-panel-header>
 	  	<div class="layout-row layout-padding" fxLayoutGap="20px">
-		  	<mat-form-field>
-		    	<input matInput placeholder="Tournament Name">
-		  	</mat-form-field>
-		  	<mat-form-field>
-		    	<input matInput [matDatepicker]="picker" placeholder="Tournament Date" >
-		    	<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-	  			<mat-datepicker #picker></mat-datepicker>
-		  	</mat-form-field>
-	  		<mat-checkbox #singleTeamTourney >Single Team Tournament</mat-checkbox>
+	  		<form [formGroup]="tourneyInfoForm">
+			  	<mat-form-field>
+			    	<input matInput placeholder="Tournament Name" formControlName="tournamentName">
+			  	</mat-form-field>
+			  	<mat-form-field>
+			    	<input matInput [matDatepicker]="picker" placeholder="Tournament Date" formControlName="tournamentDate" >
+			    	<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+		  			<mat-datepicker #picker></mat-datepicker>
+			  	</mat-form-field>
+		  		<mat-checkbox #singleTeamTourney >Single Team Tournament</mat-checkbox>
+	  		</form>
 	  	</div>
 	</mat-expansion-panel>
-	<mat-expansion-panel>
+	<mat-expansion-panel [disabled]="!tourneyInfoForm.valid">
   		<mat-expansion-panel-header>
 		    <mat-panel-title>
 		      Select Teams
 		    </mat-panel-title>
-		    
-	  </mat-expansion-panel-header>
 
+	  	</mat-expansion-panel-header>
 	</mat-expansion-panel>
-	<mat-expansion-panel>
+	<mat-expansion-panel [disabled]="!team1.team_name">
   		<mat-expansion-panel-header>
 		    <mat-panel-title>
 		      Ballots - {{ team1.team_name|| 'Team 1' }}
 		    </mat-panel-title>
 	  	</mat-expansion-panel-header>
 	</mat-expansion-panel>
-	<mat-expansion-panel *ngIf="!singleTeamTourney.checked">
+	<mat-expansion-panel *ngIf="!singleTeamTourney.checked" [disabled]="!team2.team_name">
   		<mat-expansion-panel-header>
 		    <mat-panel-title>
 		      Ballots - {{ team2.team_name|| 'Team 2' }}
