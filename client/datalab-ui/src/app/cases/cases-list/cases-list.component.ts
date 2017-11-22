@@ -20,7 +20,9 @@ export class CasesListComponent implements OnInit {
   	this.loadCases();
     this.dataChangedSubscription = this.casesService.notifyDataChanged.subscribe(casesList => { 
       this.allCases = casesList;
-      this.casesService.selectCase(casesList[0]);
+      if (this.allCases.length > 0) {
+        this.casesService.selectCase(this.allCases[0]);
+      }
     });
   }
 

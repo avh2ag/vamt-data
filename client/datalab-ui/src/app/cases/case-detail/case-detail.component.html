@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card  *ngIf="activeCase">
 	<mat-card-title class="layout-padding" style="margin-bottom:0;">
 		<mat-form-field fxFlex="50">
 			<input matInput placeholder="Case Name" #name [value]="activeCase.case_name" [readonly]="!editMode">
