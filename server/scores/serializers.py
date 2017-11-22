@@ -99,7 +99,7 @@ class TeamSerializer(serializers.ModelSerializer):
 		team_attorneys = CompetitorSerializer
 		team_witnesses = CompetitorSerializer
 		fields = (
-			'id', 'team_rounds', 'team_attorneys', 'team_witnesses'
+			'id', 'team_name', 'team_rounds', 'team_attorneys', 'team_witnesses'
 		)
 
 class TournamentSerializer(serializers.ModelSerializer):
