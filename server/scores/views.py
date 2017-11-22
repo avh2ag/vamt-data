@@ -25,6 +25,10 @@ class TournamentViewset(viewsets.ModelViewSet):
 	serializer_class = TournamentSerializer
 	queryset = Tournament.objects.all()
 
+class TeamViewset(viewsets.ModelViewSet):
+	serializer_class = TeamSerializer
+	queryset = Team.objects.all()
+
 class ScoreViewset(viewsets.ModelViewSet):
 	serializer_class = ScoreSerializer
 	queryset = Score.objects.all()
