@@ -12,6 +12,7 @@ import { TournamentPreviewComponent } from './tournament-preview/tournament-prev
 import { TournamentDetailComponent } from './tournament-detail/tournament-detail.component';
 import { CreateTournamentComponent } from './create-tournament/create-tournament.component';
 import { CasesModule } from '../cases/cases.module';
+import { TeamsModule } from '../teams/teams.module';
 @NgModule({
   imports: [
     CommonModule, MatCardModule, MatProgressBarModule, MatFormFieldModule,
@@ -20,7 +21,7 @@ import { CasesModule } from '../cases/cases.module';
  	MatTooltipModule, MatDialogModule, MatSelectModule,
  	MatListModule, MatExpansionModule, MatDatepickerModule,
  	FlexLayoutModule, FormsModule, ReactiveFormsModule,
- 	CasesModule
+ 	CasesModule, TeamsModule
   ],
   declarations: [TournamentListComponent, TournamentPreviewComponent,
    TournamentDetailComponent, CreateTournamentComponent],
