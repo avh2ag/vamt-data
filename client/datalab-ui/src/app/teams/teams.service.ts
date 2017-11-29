@@ -17,6 +17,7 @@ export class TeamsService {
 
   public getAllTeams() {
     return this.http.get(this._baseUrl).map(resp => {
+      console.log(resp.json())
       this.loadedTeams = resp.json();
       this.notifyDataChanged.next(this.loadedTeams);
       return this.loadedTeams;

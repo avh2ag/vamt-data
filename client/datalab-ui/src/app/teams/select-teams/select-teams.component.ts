@@ -32,7 +32,15 @@ export class SelectTeamsComponent implements OnInit {
   }
 
   loadTeams () {
-  	this.teamsService.getAllTeams();
+  	this.teamsService.getAllTeams().subscribe(resp => {
+
+  	}, err => {	
+  		console.log("error loading teams");
+  	});
+  }
+
+  displayFn(team: Team): string {
+  	return team ? team.team_name : "";
   }
 
   addTeam() {
