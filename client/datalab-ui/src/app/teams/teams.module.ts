@@ -3,14 +3,15 @@ import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule, MatInputModule, MatSelectModule,
-MatAutocompleteModule, MatSnackBarModule, MatIconModule, MatButtonModule, } from '@angular/material';
+MatAutocompleteModule, MatSnackBarModule, MatIconModule,
+MatButtonModule, MatTooltipModule } from '@angular/material';
 import { SelectTeamsComponent } from './select-teams/select-teams.component';
 import { TeamsService } from './teams.service';
 @NgModule({
   imports: [
     CommonModule, FlexLayoutModule, FormsModule, ReactiveFormsModule,
 	MatFormFieldModule, MatInputModule, MatSelectModule,MatAutocompleteModule,
-	MatSnackBarModule, MatIconModule, MatButtonModule,
+	MatSnackBarModule, MatIconModule, MatButtonModule, MatTooltipModule,
   ],
   providers: [ TeamsService ],
   declarations: [SelectTeamsComponent],
