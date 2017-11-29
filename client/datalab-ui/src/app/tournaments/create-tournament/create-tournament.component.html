@@ -26,7 +26,16 @@
 		      Select Teams
 		    </mat-panel-title>
 	  	</mat-expansion-panel-header>
-	  	<select-teams></select-teams>
+	  	<div class="layout-row">
+		  	<div class="layout-row" fxFlex="50">
+			  	<span>Team 1: {{ team1.team_name || "" }}</span>
+			  	<select-teams (onSelect)="selectTeam($event, 0)"></select-teams>
+		  	</div>
+		  	<div class="layout-row" fxFlex="50" *ngIf="!singleTeamTourney.checked">
+		  		<span>Team 2: {{ team2.team_name || "" }}</span>
+		  		<select-teams (onSelect)="selectTeam($event, 1)"></select-teams>
+		  	</div>
+	  	</div>
 	</mat-expansion-panel>
 	<mat-expansion-panel [disabled]="!team1.team_name">
   		<mat-expansion-panel-header>

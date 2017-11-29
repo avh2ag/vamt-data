@@ -32,6 +32,16 @@ export class CreateTournamentComponent implements OnInit {
   getAllCases() {
   	console.log("load all these, then get their witnesses")
   }
+  //teamIndex 0 for team 1, 1 for team 2
+  selectTeam(team, teamIndex) {
+    console.log(team);
+    if (teamIndex) {
+      this.team2 = team;
+    }
+    else {
+      this.team1 = team;
+    }
+  }
 
   cancel() {
   	this.dialogRef.close(false);
