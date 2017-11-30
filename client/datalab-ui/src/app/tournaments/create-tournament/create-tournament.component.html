@@ -31,7 +31,9 @@
 			  	<h4>Team 1:</h4>
 			  	<div *ngIf="team1.team_name">
 			  		<span>{{ team1.team_name }}</span>
-			  		<button mat-icon-button (click)="deselectTeam(0)"><mat-icon>edit</mat-icon></button>
+			  		<button mat-icon-button (click)="deselectTeam(0)" matTooltip="Edit Team Selection">
+			  			<mat-icon>edit</mat-icon>
+			  		</button>
 			  	</div>
 			  	<select-teams *ngIf="!team1.team_name" (onSelect)="selectTeam($event, 0)"></select-teams>
 		  	</div>
@@ -39,7 +41,9 @@
 			  	<h4>Team 2:</h4>
 			  	<div *ngIf="team2.team_name">
 			  		<span>{{ team2.team_name }}</span>
-			  		<button mat-icon-button (click)="deselectTeam(1)"><mat-icon>edit</mat-icon></button>
+			  		<button mat-icon-button (click)="deselectTeam(1)" matTooltip="Edit Team Selection">
+			  			<mat-icon>edit</mat-icon>
+			  		</button>
 			  	</div>
 			  	<select-teams *ngIf="!team2.team_name" (onSelect)="selectTeam($event, 1)"></select-teams>
 		  	</div>
