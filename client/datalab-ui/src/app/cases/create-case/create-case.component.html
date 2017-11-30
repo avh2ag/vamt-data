@@ -28,9 +28,9 @@
 				<button mat-button color="primary" (click)="hideCreateWitness()" >Cancel</button>
 			</div>
 			<mat-chip-list>
-				<mat-chip *ngFor="let witness of p_witnesses" color="primary" class="layout-row" (click)="removeWitness(witness, p_witnesses)">
+				<mat-chip *ngFor="let witness of p_witnesses" color="primary" class="layout-row" (removable)="true" (remove)="removeWitness(witness, p_witnesses)">
 					<span>{{ witness.witness_name }}</span>
-					<mat-icon style="height:20px; width:12px;font-size:inherit;">clear</mat-icon>
+					<mat-icon matChipRemove>clear</mat-icon>
 				</mat-chip>
 			</mat-chip-list>
 			<mat-divider></mat-divider>			
