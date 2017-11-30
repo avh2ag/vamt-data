@@ -43,6 +43,15 @@ export class CreateTournamentComponent implements OnInit {
     }
   }
 
+  deselectTeam(teamIndex) {
+    if (teamIndex) {
+      this.team2 = {};
+    }
+    else {
+      this.team1 = {};
+    }
+  }
+
   cancel() {
   	this.dialogRef.close(false);
   }

@@ -28,12 +28,20 @@
 	  	</mat-expansion-panel-header>
 	  	<div class="layout-row">
 		  	<div class="layout-row" fxFlex="50">
-			  	<span>Team 1: {{ team1.team_name || "" }}</span>
-			  	<select-teams (onSelect)="selectTeam($event, 0)"></select-teams>
+			  	<h4>Team 1:</h4>
+			  	<div *ngIf="team1.team_name">
+			  		<span>{{ team1.team_name }}</span>
+			  		<button mat-icon-button (click)="deselectTeam(0)"><mat-icon>edit</mat-icon></button>
+			  	</div>
+			  	<select-teams *ngIf="!team1.team_name" (onSelect)="selectTeam($event, 0)"></select-teams>
 		  	</div>
 		  	<div class="layout-row" fxFlex="50" *ngIf="!singleTeamTourney.checked">
-		  		<span>Team 2: {{ team2.team_name || "" }}</span>
-		  		<select-teams (onSelect)="selectTeam($event, 1)"></select-teams>
+			  	<h4>Team 2:</h4>
+			  	<div *ngIf="team2.team_name">
+			  		<span>{{ team2.team_name }}</span>
+			  		<button mat-icon-button (click)="deselectTeam(1)"><mat-icon>edit</mat-icon></button>
+			  	</div>
+			  	<select-teams *ngIf="!team2.team_name" (onSelect)="selectTeam($event, 1)"></select-teams>
 		  	</div>
 	  	</div>
 	</mat-expansion-panel>
