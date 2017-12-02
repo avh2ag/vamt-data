@@ -1,8 +1,7 @@
 import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CasesService } from '../../cases/cases.service';
-import { MAT_DIALOG_DATA, MatDialogRef, 
-  MatDialog, MatCheckbox } from '@angular/material';
+import { MatDialog, MatCheckbox } from '@angular/material';
 @Component({
   selector: 'create-tournament',
   templateUrl: './create-tournament.component.html',
@@ -10,8 +9,7 @@ import { MAT_DIALOG_DATA, MatDialogRef,
 })
 export class CreateTournamentComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialogRef<CreateTournamentComponent>,
-  	private casesService: CasesService) { }
+  constructor( private casesService: CasesService ) { }
   @ViewChild(MatCheckbox) checkbox: MatCheckbox;
   public tourneyInfoForm: FormGroup;
   public singleTeamTourney: boolean = false;
@@ -50,10 +48,6 @@ export class CreateTournamentComponent implements OnInit {
     else {
       this.team1 = {};
     }
-  }
-
-  cancel() {
-  	this.dialogRef.close(false);
   }
 
 }

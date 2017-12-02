@@ -5,11 +5,11 @@
 			<mat-form-field fxFlex="80">
 				<input matInput #keyword placeholder="Tournament name" >
 			</mat-form-field>
-			<button mat-icon-button matTooltip="Create Tournament" (click)="showCreateDialog()">
+			<button mat-icon-button matTooltip="Create Tournament" (click)="showCreateForm()">
 				<mat-icon>add</mat-icon>
 			</button>
 			<div fxFlex="10" style="z-index: 10; padding-left: 5%;">
-				<button mat-icon-button mat-raised-button color="accent" (click)="hidePreview()">
+				<button mat-icon-button mat-raised-button color="accent" (click)="togglePreviewMode()">
 					<mat-icon>chevron_left</mat-icon>
 				</button>
 			</div>
@@ -22,11 +22,14 @@
 		</div>
 	</div>
 	<div fxFlex="5" *ngIf="!previewVisible">
-		<button mat-icon-button mat-raised-button color="accent" (click)="showPreview()">
+		<button mat-icon-button mat-raised-button color="accent" (click)="togglePreviewMode()">
 			<mat-icon>chevron_right</mat-icon>
 		</button>
 	</div>
-	<div class="layout-column" fxFlex="66">
+	<div *ngIf="createMode">
+		<create-tournament></create-tournament>
+	</div>
+	<div class="layout-column" fxFlex="66" *ngIf="!createMode">
 		<!-- Placeholder for case details -->
 		<tournament-detail></tournament-detail>
 	</div>

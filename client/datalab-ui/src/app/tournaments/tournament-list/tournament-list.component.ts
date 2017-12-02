@@ -11,18 +11,20 @@ export class TournamentListComponent implements OnInit {
   public loading: boolean = false;
   public previewVisible: boolean = true;
   public allTournaments: Array<Tournament> = [];
+  public createMode: boolean = false;
   constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
   }
 
-  showCreateDialog() {
-    let dialogRef = this.dialog.open(CreateTournamentComponent, {
-      width: '80%',
-      height: '80%'
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-    });  
+  showCreateForm() {
+    this.createMode = true;
+  }
+  hideCreateForm() {
+    this.createMode = false;
+  }
+
+  togglePreviewMode() {
+    this.previewVisible = !this.previewVisible;
   }
 }
