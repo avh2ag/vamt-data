@@ -8,11 +8,13 @@ MatButtonModule, MatTooltipModule } from '@angular/material';
 import { SelectTeamsComponent } from './select-teams/select-teams.component';
 import { TeamsService } from './teams.service';
 import { CreateTeamComponent } from './create-team/create-team.component';
+import { CompetitorModule } from '../competitors/competitors.module';
 @NgModule({
   imports: [
     CommonModule, FlexLayoutModule, FormsModule, ReactiveFormsModule,
 	MatFormFieldModule, MatInputModule, MatSelectModule,MatAutocompleteModule,
 	MatSnackBarModule, MatIconModule, MatButtonModule, MatTooltipModule,
+	CompetitorModule
   ],
   providers: [ TeamsService ],
   declarations: [SelectTeamsComponent, CreateTeamComponent],

@@ -1,3 +1,32 @@
-<p>
-  create-team works!
-</p>
+<form class="layout-column" [formGroup]="teamForm">
+	<div class="layout-row">
+		<mat-form-field fxFlex="40">
+			<input matInput placeholder="Team Name" formControlName="name">
+		</mat-form-field>
+		<span fxFlex="5"></span>
+		<mat-form-field fxFlex="40">
+		    <input type="text" placeholder="Competitor Name" aria-label="Competitor Name" matInput [formControl]="competitorControl" [matAutocomplete]="auto">
+		    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+		      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+		        {{ option.name }}
+		      </mat-option>
+		    </mat-autocomplete>
+		</mat-form-field>
+		<button mat-icon-button [disabled]="!competitorControl.value" (click)="addCompetitor()" matTooltip="Select Team">
+		  	<mat-icon>add</mat-icon>
+		</button>		
+	</div>
+	<div class="layout-row">
+		<div fxFlex >
+			Selected Competitors Here:
+		</div>
+		<div fxFlex class="layout-row">
+			<button mat-raised-button matTooltip="Create Team"
+			color="primary" [disabled]="!teamForm.valid" (click)="createTeam()">
+				Create
+			</button>
+			<button mat-raised-button matTooltip="Cancel">Cancel</button>	
+		</div>
+	</div>
+
+</form>

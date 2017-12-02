@@ -57,8 +57,7 @@
 			  	</div>
 		  	</div>
 		  	<div *ngIf="createTeamMode" class="layout-row">
-		  		<create-team fxFlex="90"></create-team>
-		  		<button mat-button (click)="toggleCreateTeamMode()">Cancel</button>
+		  		<create-team ></create-team>
 		  	</div>
 		</mat-expansion-panel>
 		<mat-expansion-panel [disabled]="!team1.team_name">
