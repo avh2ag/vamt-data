@@ -90,8 +90,7 @@ class Competitor(models.Model):
 class Team(models.Model):
 	team_name = models.TextField(blank=False, null=False)
 	team_rounds = models.ManyToManyField(Round, blank=True)
-	team_attorneys = models.ManyToManyField(Competitor, related_name="team_attorneys", blank=True)
-	team_witnesses = models.ManyToManyField(Competitor, related_name="team_witnesses", blank=True)
+	team_competitors = models.ManyToManyField(Competitor, related_name="team_competitors", blank=True)
 
 class Tournament(models.Model):
 	tournament_date = models.DateField(null=False)

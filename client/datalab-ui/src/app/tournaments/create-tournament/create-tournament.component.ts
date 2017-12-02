@@ -1,7 +1,8 @@
-import { Component, OnInit, Inject, ViewChild } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild, Output, EventEmitter } from '@angular/core';
+import { MatDialog, MatCheckbox } from '@angular/material';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CasesService } from '../../cases/cases.service';
-import { MatDialog, MatCheckbox } from '@angular/material';
+import { Tournament } from '../../config/models';
 @Component({
   selector: 'create-tournament',
   templateUrl: './create-tournament.component.html',
@@ -11,9 +12,11 @@ export class CreateTournamentComponent implements OnInit {
 
   constructor( private casesService: CasesService ) { }
   @ViewChild(MatCheckbox) checkbox: MatCheckbox;
+  @Output() actionSelect = new EventEmitter<Tournament>();
   public tourneyInfoForm: FormGroup;
   public singleTeamTourney: boolean = false;
   public tourneyInfoOpen: boolean = true;
+  public createTeamMode: boolean = false;
   public team1 = {};
   public team2 = {}; //switch to team after input
   ngOnInit() {
@@ -41,6 +44,10 @@ export class CreateTournamentComponent implements OnInit {
     }
   }
 
+  toggleCreateTeamMode() {
+    this.createTeamMode = !this.createTeamMode;
+  }
+
   deselectTeam(teamIndex) {
     if (teamIndex) {
       this.team2 = {};
@@ -48,6 +55,10 @@ export class CreateTournamentComponent implements OnInit {
     else {
       this.team1 = {};
     }
+  }
+
+  cancel() {
+    this.actionSelect.emit(null);
   }
 
 }

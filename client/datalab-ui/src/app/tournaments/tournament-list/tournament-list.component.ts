@@ -20,6 +20,7 @@ export class TournamentListComponent implements OnInit {
   showCreateForm() {
     this.createMode = true;
   }
+  
   hideCreateForm() {
     this.createMode = false;
   }

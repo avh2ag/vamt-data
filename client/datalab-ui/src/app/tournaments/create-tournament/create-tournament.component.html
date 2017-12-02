@@ -29,8 +29,8 @@
 			      Select Teams
 			    </mat-panel-title>
 		  	</mat-expansion-panel-header>
-		  	<div class="layout-row layout-padding">
-			  	<div class="layout-row" fxFlex="50">
+		  	<div class="layout-row layout-padding" *ngIf="!createTeamMode">
+			  	<div class="layout-row" fxFlex="45">
 				  	<h4>Team 1:</h4>
 				  	<div *ngIf="team1.team_name">
 				  		<span>{{ team1.team_name }}</span>
@@ -40,7 +40,7 @@
 				  	</div>
 				  	<select-teams *ngIf="!team1.team_name" (onSelect)="selectTeam($event, 0)"></select-teams>
 			  	</div>
-			  	<div class="layout-row" fxFlex="50" *ngIf="!singleTeamTourney.checked">
+			  	<div class="layout-row" fxFlex="45" *ngIf="!singleTeamTourney.checked">
 				  	<h4>Team 2:</h4>
 				  	<div *ngIf="team2.team_name">
 				  		<span>{{ team2.team_name }}</span>
@@ -50,6 +50,15 @@
 				  	</div>
 				  	<select-teams *ngIf="!team2.team_name" (onSelect)="selectTeam($event, 1)"></select-teams>
 			  	</div>
+			  	<div fxFlex="5">
+			  		<button mat-icon-button matTooltip="Create New Team" (click)="toggleCreateTeamMode()">
+			  			<mat-icon>add_circle</mat-icon>
+			  		</button>
+			  	</div>
+		  	</div>
+		  	<div *ngIf="createTeamMode" class="layout-row">
+		  		<create-team fxFlex="90"></create-team>
+		  		<button mat-button (click)="toggleCreateTeamMode()">Cancel</button>
 		  	</div>
 		</mat-expansion-panel>
 		<mat-expansion-panel [disabled]="!team1.team_name">

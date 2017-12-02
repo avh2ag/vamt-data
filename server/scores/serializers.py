@@ -96,10 +96,9 @@ class TeamSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Team
 		team_rounds = RoundSeriaizer
-		team_attorneys = CompetitorSerializer
-		team_witnesses = CompetitorSerializer
+		team_competitors = CompetitorSerializer
 		fields = (
-			'id', 'team_name', 'team_rounds', 'team_attorneys', 'team_witnesses'
+			'id', 'team_name', 'team_rounds', 'team_competitors'
 		)
 
 class TournamentSerializer(serializers.ModelSerializer):

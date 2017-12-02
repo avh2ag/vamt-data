@@ -104,8 +104,7 @@ export class Team {
 	constructor() {};
 	public team_name: string;
 	public team_rounds: Array<Round>;
-	public team_attorneys: Array<Competitor>;
-	public team_witnesses: Array<Competitor>;	
+	public team_competitors: Array<Competitor>;
 }
 
 export class Round {
