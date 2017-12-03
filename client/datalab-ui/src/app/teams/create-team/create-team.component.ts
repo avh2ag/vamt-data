@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import { TeamsService } from '../teams.service';
 import { CompetitorsService } from '../../competitors/competitors.service';
 import { Competitor, Team } from '../../config/models';
+import { findIndex } from 'lodash';
 @Component({
   selector: 'create-team',
   templateUrl: './create-team.component.html',
@@ -19,12 +20,12 @@ export class CreateTeamComponent implements OnInit {
   public competitorControl = new FormControl();
   public options: Array<Competitor> = [];
   public filteredOptions: Observable<Competitor[]>;
+  public selectedCompetitors: Array<Competitor> = [];
   public competitorSubscription;
   ngOnInit() {
   	this.options = this.competitorsService.loadedCompetitors;
   	this.competitorSubscription = this.competitorsService.notifyDataChanged.subscribe((competitors: Array<Competitor>) => {
   		this.options = competitors;
-  		console.log(this.options);
   	});
   	if (this.options.length == 0) {
   		this.loadCompetitors();
@@ -60,7 +61,15 @@ export class CreateTeamComponent implements OnInit {
   }
 
   addCompetitor() {
+  	let index = findIndex(this.selectedCompetitors, competitor => {
+  		return competitor.id === this.competitorControl.value.id;
+  	}); 
+  	if ( index < 0 ){
+  		this.selectedCompetitors.push(this.competitorControl.value);  		
+  	}
 
+  	console.log(this.selectedCompetitors);
+  	this.competitorControl.setValue(null);
   }
 
 }

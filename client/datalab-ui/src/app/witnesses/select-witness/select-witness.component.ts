@@ -40,7 +40,6 @@ export class SelectWitnessComponent implements OnInit {
   }
 
   addWitness() {
-  	console.log(this.witnessControl.value);
   	this.onSelect.emit(this.witnessControl.value);
   	this.witnessControl.setValue(null);
   }
