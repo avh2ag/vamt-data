@@ -16,17 +16,21 @@
 		  	<mat-icon>add</mat-icon>
 		</button>		
 	</div>
-	<div class="layout-row">
-		<div fxFlex >
-			Selected Competitors Here:
-		</div>
-		<div fxFlex class="layout-row">
+	<div class="layout-row layout-padding">
+		<mat-chip-list fxFlex>
+			<mat-chip *ngFor="let competitor of selectedCompetitors" color="primary" (click)="removeCompetitor(competitor.id)">
+				<span>{{ competitor.name }}</span>
+				<mat-icon matChipRemove>clear</mat-icon>
+			</mat-chip>
+		</mat-chip-list>
+	</div>
+	<div class="layout-row " style="margin-top:1%;" fxLayoutAlign="center right">
 			<button mat-raised-button matTooltip="Create Team"
-			color="primary" [disabled]="!teamForm.valid" (click)="createTeam()">
+			color="primary" [disabled]="!teamForm.valid || selectedCompetitors.length < 6" (click)="createTeam()">
 				Create
 			</button>
 			<button mat-raised-button matTooltip="Cancel">Cancel</button>	
-		</div>
 	</div>
+
 
 </form>

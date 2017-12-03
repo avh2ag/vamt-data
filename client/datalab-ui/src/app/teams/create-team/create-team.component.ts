@@ -32,7 +32,6 @@ export class CreateTeamComponent implements OnInit {
   	}
   	this.teamForm = new FormGroup({
       'name': new FormControl(null, [Validators.required]),
-      'type': new FormControl(null, [Validators.required]),
     });
      this.filteredOptions = this.competitorControl.valueChanges
         .startWith(null)
@@ -70,6 +69,17 @@ export class CreateTeamComponent implements OnInit {
 
   	console.log(this.selectedCompetitors);
   	this.competitorControl.setValue(null);
+  }
+
+  removeCompetitor(competitorId) {
+  	let index = findIndex(this.selectedCompetitors, competitor => {
+  		return competitor.id == competitorId;
+  	});
+  	if (index >= 0) {
+  		console.log("splicing?")
+  		this.selectedCompetitors.splice(index, 1);
+  	}
+  	console.log(this.selectedCompetitors);
   }
 
 }
