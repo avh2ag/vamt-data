@@ -22,7 +22,6 @@ export class SelectTeamsComponent implements OnInit {
   ngOnInit() {
   	this.teamsSubscription = this.teamsService.notifyDataChanged.subscribe((teams: Team[]) => {
   		this.options = teams;
-  		console.log(this.options);
   	});
   	this.loadTeams();
   	this.filteredOptions = this.teamsControl.valueChanges

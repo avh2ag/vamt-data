@@ -57,7 +57,7 @@
 			  	</div>
 		  	</div>
 		  	<div *ngIf="createTeamMode" class="layout-row">
-		  		<create-team ></create-team>
+		  		<create-team (onComplete)="toggleCreateTeamMode($event)"></create-team>
 		  	</div>
 		</mat-expansion-panel>
 		<mat-expansion-panel [disabled]="!team1.team_name">

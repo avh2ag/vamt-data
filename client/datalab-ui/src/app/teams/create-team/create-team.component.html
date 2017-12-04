@@ -1,19 +1,28 @@
-<form class="layout-column" [formGroup]="teamForm">
-	<div class="layout-row">
-		<mat-form-field fxFlex="40">
-			<input matInput placeholder="Team Name" formControlName="name">
-		</mat-form-field>
+<div class="layout-column" >
+	<div class="layout-row layout-padding">
+		<button mat-icon-button matTooltip="Back to Team Select" (click)="exit()">
+			<mat-icon>navigate_before</mat-icon>
+		</button>
+		<form fxFlex="80" [formGroup]="teamForm" fxLayoutGap="10px">
+			<mat-form-field fxFlex="45">
+				<input matInput placeholder="Team Name" formControlName="name">
+			</mat-form-field>
+			<mat-form-field fxFlex="45">
+			    <input type="text" placeholder="Competitor Name" aria-label="Competitor Name" matInput [formControl]="competitorControl" [matAutocomplete]="auto">
+			    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+			      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+			        {{ option.name }}
+			      </mat-option>
+			    </mat-autocomplete>
+			</mat-form-field>
+			<button mat-icon-button [disabled]="!competitorControl.value" (click)="addCompetitor()" matTooltip="Select Competitor">
+			  	<mat-icon>add</mat-icon>
+			</button>
+		</form>
 		<span fxFlex="5"></span>
-		<mat-form-field fxFlex="40">
-		    <input type="text" placeholder="Competitor Name" aria-label="Competitor Name" matInput [formControl]="competitorControl" [matAutocomplete]="auto">
-		    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-		      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-		        {{ option.name }}
-		      </mat-option>
-		    </mat-autocomplete>
-		</mat-form-field>
-		<button mat-icon-button [disabled]="!competitorControl.value" (click)="addCompetitor()" matTooltip="Select Competitor">
-		  	<mat-icon>add</mat-icon>
+		<button mat-button matTooltip="Create Team"
+			color="primary" [disabled]="!teamForm.valid || selectedCompetitors.length < 6" (click)="createTeam()">
+				Create
 		</button>		
 	</div>
 	<div class="layout-row layout-padding">
@@ -24,13 +33,5 @@
 			</mat-chip>
 		</mat-chip-list>
 	</div>
-	<div class="layout-row " style="margin-top:1%;" fxLayoutAlign="center right">
-			<button mat-raised-button matTooltip="Create Team"
-			color="primary" [disabled]="!teamForm.valid || selectedCompetitors.length < 6" (click)="createTeam()">
-				Create
-			</button>
-			<button mat-raised-button matTooltip="Cancel">Cancel</button>	
-	</div>
 
-
-</form>
+</div>

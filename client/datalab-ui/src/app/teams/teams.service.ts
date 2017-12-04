@@ -26,9 +26,10 @@ export class TeamsService {
     });
   } 
 
-  public createTeam(teamName) {
+  public createTeam(teamName, competitors) {
     return this.http.post(this._baseUrl, {
       team_name: teamName,
+      team_competitors: competitors,
       headers: 'application/json'
     }).map(resp => {
       let createdTeam = resp.json();
