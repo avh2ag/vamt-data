@@ -56,10 +56,14 @@ export class CreateTeamComponent implements OnInit {
   }
 
   createTeam() {
-
+  	//check validity
   }
 
   addCompetitor() {
+  	if (!this.competitorControl.value.id) {
+  		this.competitorControl.setValue(null);
+  		return;
+  	}
   	let index = findIndex(this.selectedCompetitors, competitor => {
   		return competitor.id === this.competitorControl.value.id;
   	}); 
